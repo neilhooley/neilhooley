@@ -4,13 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Neil Hooley</title>
-
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
   <!-- HERO -->
-  <header class="hero" role="banner">
+  <header class="hero">
     <div class="hero-media" aria-hidden="true">
       <video
         id="heroVideo"
@@ -26,35 +25,34 @@
       <div class="hero-overlay"></div>
     </div>
 
-    <div class="hero-top">
+    <div class="hero-content">
       <div class="site-title">NEIL HOOLEY</div>
+
+      <section class="card" aria-label="About Neil Hooley">
+        <div class="card-grid">
+          <div class="card-left">
+            <div class="kicker">Hey there!</div>
+            <h1 class="headline">I’M NEIL.</h1>
+          </div>
+
+          <div class="card-right">
+            <p class="lead">
+              I’ve always believed stories shape us, and the right story can change everything.
+            </p>
+
+            <p class="body">
+              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience,
+              and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
+            </p>
+
+            <p class="body">
+              Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely,
+              and discover the beauty of what God is writing in their own story.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
-
-    <!-- White card that overlaps hero -->
-    <section class="card" aria-label="About Neil Hooley">
-      <div class="card-grid">
-        <div class="card-left">
-          <div class="kicker">Hey there!</div>
-          <h1 class="headline">I’M NEIL.</h1>
-        </div>
-
-        <div class="card-right">
-          <p class="lead">
-            I’ve always believed stories shape us, and the right story can change everything.
-          </p>
-
-          <p class="body">
-            As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience,
-            and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
-          </p>
-
-          <p class="body">
-            Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely,
-            and discover the beauty of what God is writing in their own story.
-          </p>
-        </div>
-      </div>
-    </section>
   </header>
 
   <!-- FEATURED VIDEO -->
@@ -78,25 +76,21 @@
       </div>
     </section>
 
-    <!-- SOCIAL ICONS + FOOTER -->
-    <footer class="footer" role="contentinfo">
+    <footer class="footer">
       <nav class="social" aria-label="Social links">
         <a class="icon-link" href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-          <!-- Facebook icon -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M22 12.06C22 6.504 17.523 2 12 2S2 6.504 2 12.06c0 5.02 3.657 9.18 8.438 9.94v-7.03H7.898v-2.91h2.54V9.845c0-2.522 1.492-3.915 3.777-3.915 1.094 0 2.238.197 2.238.197v2.475h-1.26c-1.242 0-1.63.776-1.63 1.572v1.89h2.773l-.443 2.91h-2.33V22c4.78-.76 8.437-4.92 8.437-9.94z"/>
           </svg>
         </a>
 
         <a class="icon-link" href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-          <!-- Instagram icon -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6zm0 2a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM17.8 6.7a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/>
           </svg>
         </a>
 
         <a class="icon-link" href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank" rel="noopener" aria-label="YouTube">
-          <!-- YouTube icon -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31.2 31.2 0 0 0 2 12a31.2 31.2 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 22 12a31.2 31.2 0 0 0-.4-4.8zM10.2 15.4V8.6L16 12l-5.8 3.4z"/>
           </svg>
@@ -108,8 +102,7 @@
   </main>
 
   <script>
-    // Best-effort autoplay across browsers (especially iOS/Safari).
-    // If autoplay is blocked, it will start on first tap/scroll/click.
+    // iOS Safari: ensure autoplay attempts again after first interaction
     (function () {
       const v = document.getElementById('heroVideo');
       if (!v) return;
