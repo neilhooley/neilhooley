@@ -1,141 +1,115 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neil Hooley</title>
-    <meta name="description" content="Neil Hooley — entrepreneur, storyteller, follower of Jesus." />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neil Hooley</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
-      rel="stylesheet"
-    />
+<body>
+  <!-- HERO -->
+  <header class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+      <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
+    </video>
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
+    <div class="hero-overlay"></div>
 
-  <body>
-    <header class="site-header">
-      <div class="container">
-        <a class="wordmark" href="/" aria-label="Neil Hooley home">NEIL HOOLEY</a>
-      </div>
-    </header>
+    <div class="site-title">NEIL HOOLEY</div>
+  </header>
 
-    <main>
-      <!-- HERO with background loop video -->
-      <section class="hero" aria-label="Introduction">
-        <div class="hero-media" aria-hidden="true">
-          <video class="hero-video" autoplay muted loop playsinline preload="auto">
-           <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
-          </video>
-          <div class="hero-shade"></div>
+  <!-- CONTENT CARD -->
+  <main class="page">
+    <section class="card">
+      <div class="kicker">HEY THERE!</div>
+
+      <div class="grid">
+        <div class="left">
+          <h1>I’M NEIL.</h1>
         </div>
 
-        <div class="container hero-content">
-          <p class="kicker">Hey there!</p>
-
-          <h1 class="headline">I’M NEIL.</h1>
-
-          <p class="subhead">
+        <div class="right">
+          <p class="lead">
             I’ve always believed stories shape us, and the right story can change everything.
           </p>
 
-          <div class="body">
-            <p>
-              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations,
-              lived experience, and a deep love for storytelling to help others see their lives
-              through the lens of redemption and purpose.
-            </p>
+          <p>
+            As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience,
+            and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
+          </p>
 
-            <p>
-              Through stories of faith, failure, and transformation, my work invites people to slow
-              down, listen closely, and discover the beauty of what God is writing in their own story.
-            </p>
-          </div>
-
-          <nav class="social" aria-label="Social links">
-            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
-            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
-          </nav>
+          <p>
+            Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely,
+            and discover the beauty of what God is writing in their own story.
+          </p>
         </div>
-      </section>
-
-      <!-- Bottom click-to-watch video -->
-      <section class="featured" aria-label="Featured video">
-        <div class="container">
-          <button class="video-card" id="openVideo" type="button" aria-haspopup="dialog">
-            <div class="video-card-inner">
-              <div class="video-card-text">
-                <div class="video-card-title">Watch</div>
-                <div class="video-card-sub">Click to play</div>
-              </div>
-
-              <img
-                class="video-poster"
-                src="assets/featured-poster.jpg"
-                alt=""
-                loading="lazy"
-              />
-
-              <div class="video-play">
-                <span class="video-play-icon" aria-hidden="true">▶</span>
-              </div>
-            </div>
-          </button>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container">
-        <small>© <span id="year"></span> Kingdom Media</small>
       </div>
-    </footer>
 
-    <!-- Modal player -->
-    <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
-      <div class="modal-backdrop" id="closeVideoBackdrop"></div>
-      <div class="modal-panel" role="document">
-        <button class="modal-close" id="closeVideo" type="button" aria-label="Close video">✕</button>
+      <hr class="rule" />
 
-        <video class="modal-video" id="featuredVideo" controls playsinline preload="metadata">
+      <nav class="links">
+        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+      </nav>
+    </section>
+
+    <!-- FEATURED VIDEO (PLAYS IN PLACE) -->
+    <section class="featured">
+      <div class="video-wrap">
+        <video
+          id="featuredVideo"
+          class="featured-video"
+          preload="metadata"
+          playsinline
+          controls
+          poster="assets/featured-poster.jpg"
+        >
           <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
         </video>
+
+        <button class="video-play" id="featuredPlayBtn" aria-label="Play video"></button>
       </div>
-    </div>
+    </section>
 
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
+    <!-- SOCIAL ICONS (BELOW VIDEO, ABOVE COPYRIGHT) -->
+    <footer class="footer">
+      <div class="social">
+        <a class="icon" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
+          <!-- simple icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.7V5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.9V11H6.6v3h2.7v8h4.2z"/></svg>
+        </a>
 
-      const modal = document.getElementById("videoModal");
-      const openBtn = document.getElementById("openVideo");
-      const closeBtn = document.getElementById("closeVideo");
-      const closeBackdrop = document.getElementById("closeVideoBackdrop");
-      const vid = document.getElementById("featuredVideo");
+        <a class="icon" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 10.5zM18 6.8a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 18 6.8z"/></svg>
+        </a>
 
-      function openModal() {
-        modal.classList.add("is-open");
-        try {
-          vid.currentTime = 0;
-        } catch (e) {}
-        vid.play().catch(() => {});
+        <a class="icon" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.6A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.6 7.5.6 7.5.6s5.7 0 7.5-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
+        </a>
+      </div>
+
+      <div class="copyright">© 2026 Kingdom Media</div>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      const v = document.getElementById("featuredVideo");
+      const btn = document.getElementById("featuredPlayBtn");
+      if (!v || !btn) return;
+
+      function sync() {
+        btn.style.display = v.paused ? "block" : "none";
       }
 
-      function closeModal() {
-        modal.classList.remove("is-open");
-        vid.pause();
-      }
-
-      openBtn.addEventListener("click", openModal);
-      closeBtn.addEventListener("click", closeModal);
-      closeBackdrop.addEventListener("click", closeModal);
-
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
-      });
-    </script>
-  </body>
+      btn.addEventListener("click", () => v.play());
+      v.addEventListener("play", sync);
+      v.addEventListener("pause", sync);
+      v.addEventListener("ended", sync);
+      sync();
+    })();
+  </script>
+</body>
 </html>
