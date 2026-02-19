@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neil Hooley</title>
+    <meta name="description" content="Neil Hooley — entrepreneur, storyteller, follower of Jesus." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="wordmark" href="/" aria-label="Neil Hooley home">NEIL HOOLEY</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO with background loop video -->
+      <section class="hero" aria-label="Introduction">
+        <div class="hero-media" aria-hidden="true">
+          <video class="hero-video" autoplay muted loop playsinline preload="auto">
+            <source src="assets/hero.mp4" type="video/mp4" />
+          </video>
+          <div class="hero-shade"></div>
+        </div>
+
+        <div class="container hero-content">
+          <p class="kicker">Hey there!</p>
+
+          <h1 class="headline">I’M NEIL.</h1>
+
+          <p class="subhead">
+            I’ve always believed stories shape us, and the right story can change everything.
+          </p>
+
+          <div class="body">
+            <p>
+              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations,
+              lived experience, and a deep love for storytelling to help others see their lives
+              through the lens of redemption and purpose.
+            </p>
+
+            <p>
+              Through stories of faith, failure, and transformation, my work invites people to slow
+              down, listen closely, and discover the beauty of what God is writing in their own story.
+            </p>
+          </div>
+
+          <nav class="social" aria-label="Social links">
+            <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">Facebook</a>
+            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">YouTube</a>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Bottom click-to-watch video -->
+      <section class="featured" aria-label="Featured video">
+        <div class="container">
+          <button class="video-card" id="openVideo" type="button" aria-haspopup="dialog">
+            <div class="video-card-inner">
+              <div class="video-card-text">
+                <div class="video-card-title">Watch</div>
+                <div class="video-card-sub">Click to play</div>
+              </div>
+
+              <img
+                class="video-poster"
+                src="assets/featured-poster.jpg"
+                alt=""
+                loading="lazy"
+              />
+
+              <div class="video-play">
+                <span class="video-play-icon" aria-hidden="true">▶</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© <span id="year"></span> Kingdom Media</small>
+      </div>
+    </footer>
+
+    <!-- Modal player -->
+    <div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+      <div class="modal-backdrop" id="closeVideoBackdrop"></div>
+      <div class="modal-panel" role="document">
+        <button class="modal-close" id="closeVideo" type="button" aria-label="Close video">✕</button>
+
+        <video class="modal-video" id="featuredVideo" controls playsinline preload="metadata">
+          <source src="assets/featured.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </div>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const modal = document.getElementById("videoModal");
+      const openBtn = document.getElementById("openVideo");
+      const closeBtn = document.getElementById("closeVideo");
+      const closeBackdrop = document.getElementById("closeVideoBackdrop");
+      const vid = document.getElementById("featuredVideo");
+
+      function openModal() {
+        modal.classList.add("is-open");
+        try {
+          vid.currentTime = 0;
+        } catch (e) {}
+        vid.play().catch(() => {});
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        vid.pause();
+      }
+
+      openBtn.addEventListener("click", openModal);
+      closeBtn.addEventListener("click", closeModal);
+      closeBackdrop.addEventListener("click", closeModal);
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+      });
+    </script>
+  </body>
+</html>
