@@ -1,17 +1,27 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Neil Hooley</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
+
   <!-- HERO -->
   <header class="hero">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-      <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
+    <video
+      id="heroVideo"
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      disablepictureinpicture
+    >
+      <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4">
     </video>
 
     <div class="hero-overlay"></div>
@@ -19,8 +29,10 @@
     <div class="site-title">NEIL HOOLEY</div>
   </header>
 
-  <!-- CONTENT CARD -->
+  <!-- PAGE -->
   <main class="page">
+
+    <!-- CARD -->
     <section class="card">
       <div class="kicker">HEY THERE!</div>
 
@@ -35,75 +47,81 @@
           </p>
 
           <p>
-            As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience,
-            and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
+            As an entrepreneur, storyteller, and follower of Jesus, I use real conversations,
+            lived experience, and a deep love for storytelling to help others see their lives
+            through the lens of redemption and purpose.
           </p>
 
           <p>
-            Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely,
-            and discover the beauty of what God is writing in their own story.
+            Through stories of faith, failure, and transformation, my work invites people
+            to slow down, listen closely, and discover the beauty of what God is writing in their own story.
           </p>
         </div>
       </div>
-
-      <hr class="rule" />
-
-      <nav class="links">
-        <a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-        <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
-      </nav>
     </section>
 
-    <!-- FEATURED VIDEO (PLAYS IN PLACE) -->
+    <!-- FEATURED VIDEO (plays in place) -->
     <section class="featured">
       <div class="video-wrap">
         <video
           id="featuredVideo"
           class="featured-video"
-          preload="metadata"
-          playsinline
           controls
+          playsinline
+          preload="metadata"
           poster="assets/featured-poster.jpg"
         >
-          <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
+          <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4">
         </video>
 
         <button class="video-play" id="featuredPlayBtn" aria-label="Play video"></button>
       </div>
     </section>
 
-    <!-- SOCIAL ICONS (BELOW VIDEO, ABOVE COPYRIGHT) -->
+    <!-- FOOTER (icons only) -->
     <footer class="footer">
       <div class="social">
-        <a class="icon" href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook">
-          <!-- simple icon -->
+        <a class="icon" href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.5 1.6-1.5h1.7V5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.9V11H6.6v3h2.7v8h4.2z"/></svg>
         </a>
 
-        <a class="icon" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
+        <a class="icon" href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 12 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 12 3.5 3.5 0 0 0 12 10.5zM18 6.8a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 18 6.8z"/></svg>
         </a>
 
-        <a class="icon" href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
+        <a class="icon" href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank" rel="noopener" aria-label="YouTube">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.5 12 4.5 12 4.5s-5.7 0-7.5.6A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.6 7.5.6 7.5.6s5.7 0 7.5-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/></svg>
         </a>
       </div>
 
       <div class="copyright">© 2026 Kingdom Media</div>
     </footer>
+
   </main>
 
   <script>
+    // iPhone autoplay helper (best effort)
+    (function () {
+      const hv = document.getElementById("heroVideo");
+      async function tryPlay() {
+        if (!hv) return;
+        hv.muted = true;
+        hv.playsInline = true;
+        try { await hv.play(); } catch (e) {}
+      }
+      window.addEventListener("load", tryPlay);
+      document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === "visible") tryPlay();
+      });
+    })();
+
+    // Featured play overlay
     (function () {
       const v = document.getElementById("featuredVideo");
       const btn = document.getElementById("featuredPlayBtn");
       if (!v || !btn) return;
 
-      function sync() {
-        btn.style.display = v.paused ? "block" : "none";
-      }
-
+      function sync() { btn.style.display = v.paused ? "block" : "none"; }
       btn.addEventListener("click", () => v.play());
       v.addEventListener("play", sync);
       v.addEventListener("pause", sync);
@@ -111,5 +129,6 @@
       sync();
     })();
   </script>
+
 </body>
 </html>
