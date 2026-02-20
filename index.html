@@ -1,152 +1,124 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Neil Hooley</title>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Neil Hooley</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet"/>
 
-    <link rel="stylesheet" href="./style.css" />
-  </head>
+<link rel="stylesheet" href="./style.css" />
+</head>
 
-  <body>
-    <!-- HERO -->
-    <header class="hero" aria-label="Hero">
-      <div class="hero__videoWrap" aria-hidden="true">
-        <video class="hero__video" autoplay muted loop playsinline preload="auto">
-          <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
-        </video>
-        <div class="hero__overlay"></div>
+<body>
+
+<header class="hero">
+  <div class="hero__videoWrap">
+    <video class="hero__video" autoplay muted loop playsinline preload="auto">
+      <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4"/>
+    </video>
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="hero__topTitle">NEIL HOOLEY</div>
+
+  <section class="card">
+    <div class="card__grid">
+      <div>
+        <div class="card__kicker">Hey there!</div>
+        <h1 class="card__headline">I’M NEIL.</h1>
       </div>
 
-      <div class="hero__topTitle">NEIL HOOLEY</div>
+      <div>
+        <h2 class="card__subhead">
+          I’ve always believed stories shape us, and the right story can change everything.
+        </h2>
 
-      <!-- White Card -->
-      <section class="card">
-        <div class="card__grid">
-          <div class="card__left">
-            <div class="card__kicker">Hey there!</div>
-            <h1 class="card__headline">I’M NEIL.</h1>
-          </div>
+        <p class="card__p">
+          As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience, and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
+        </p>
 
-          <div class="card__right">
-            <h2 class="card__subhead">
-              I’ve always believed stories shape us, and the right story can change everything.
-            </h2>
-
-            <p class="card__p">
-              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations,
-              lived experience, and a deep love for storytelling to help others see their lives
-              through the lens of redemption and purpose.
-            </p>
-
-            <p class="card__p">
-              Through stories of faith, failure, and transformation, my work invites people to
-              slow down, listen closely, and discover the beauty of what God is writing in their
-              own story.
-            </p>
-          </div>
-        </div>
-      </section>
-    </header>
-
-    <!-- BOTTOM SECTION -->
-    <main class="bottom">
-      <div class="bottom__inner">
-        <!-- Featured Video -->
-        <section class="featured">
-          <div class="featured__frame">
-            <video
-              id="featuredVideo"
-              class="featured__video"
-              playsinline
-              preload="metadata"
-              poster="./assets/featured-poster.jpg"
-            >
-              <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
-            </video>
-
-            <button id="featuredPlay" class="featured__play" type="button" aria-label="Play video">
-              <span class="featured__playIcon"></span>
-            </button>
-          </div>
-        </section>
-
-        <!-- SOCIAL ICONS (CLEANED + MATCHED STYLE) -->
-        <nav class="social" aria-label="Social links">
-
-          <!-- Facebook -->
-          <a class="social__link"
-            href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr"
-            target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <svg viewBox="0 0 24 24">
-              <path d="M14 9h2V6h-2c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.4l.6-3H13v-2c0-.6.4-1 1-1z"/>
-            </svg>
-          </a>
-
-          <!-- Instagram -->
-          <a class="social__link"
-            href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr"
-            target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24">
-              <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9z"/>
-              <path d="M12 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
-              <path d="M17.2 6.8a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-            </svg>
-          </a>
-
-          <!-- YouTube (UPDATED CLEAN ICON) -->
-          <a class="social__link"
-            href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz"
-            target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 8.2c0-1.6-1.2-2.9-2.8-3.1C16.4 4.9 12 4.9 12 4.9s-4.4 0-6.2.2C4.2 5.3 3 6.6 3 8.2v7.6c0 1.6 1.2 2.9 2.8 3.1 1.8.2 6.2.2 6.2.2s4.4 0 6.2-.2c1.6-.2 2.8-1.5 2.8-3.1V8.2z"/>
-              <path d="M10.5 9.3v5.4L15.7 12l-5.2-2.7z"/>
-            </svg>
-          </a>
-
-        </nav>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-          <div class="footer__copy">© 2026 Kingdom Media</div>
-        </footer>
+        <p class="card__p">
+          Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely, and discover the beauty of what God is writing in their own story.
+        </p>
       </div>
-    </main>
+    </div>
+  </section>
+</header>
 
-    <script>
-      (function () {
-        const v = document.getElementById("featuredVideo");
-        const b = document.getElementById("featuredPlay");
+<main class="bottom">
+<div class="bottom__inner">
 
-        function playInline() {
-          if (!v) return;
-          v.controls = true;
-          v.play();
-          b?.setAttribute("data-hidden", "true");
-        }
+<section class="featured">
+<div class="featured__frame">
+<video id="featuredVideo" class="featured__video" playsinline preload="metadata" poster="./assets/featured-poster.jpg">
+<source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4"/>
+</video>
 
-        function showOverlay() {
-          b?.removeAttribute("data-hidden");
-          if (v) v.controls = false;
-        }
+<button id="featuredPlay" class="featured__play">
+<span class="featured__playIcon"></span>
+</button>
+</div>
+</section>
 
-        b?.addEventListener("click", playInline);
+<!-- ⭐️ PREMIUM OUTLINE ICONS -->
+<nav class="social">
 
-        v?.addEventListener("click", () => {
-          if (v.paused) playInline();
-        });
+<a class="social__link" href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank">
+<svg viewBox="0 0 24 24">
+<path d="M14 9h2V6h-2c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.4l.6-3H13v-2c0-.6.4-1 1-1z"/>
+</svg>
+</a>
 
-        v?.addEventListener("pause", showOverlay);
-        v?.addEventListener("ended", showOverlay);
-      })();
-    </script>
-  </body>
+<a class="social__link" href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank">
+<svg viewBox="0 0 24 24">
+<rect x="3" y="3" width="18" height="18" rx="5"/>
+<circle cx="12" cy="12" r="4"/>
+<circle cx="17" cy="7" r="1"/>
+</svg>
+</a>
+
+<a class="social__link" href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank">
+<svg viewBox="0 0 24 24">
+<rect x="3" y="6" width="18" height="12" rx="3"/>
+<polygon points="10,9 16,12 10,15"/>
+</svg>
+</a>
+
+</nav>
+
+<footer class="footer">
+<div class="footer__copy">© 2026 Kingdom Media</div>
+</footer>
+
+</div>
+</main>
+
+<script>
+(function () {
+const v = document.getElementById("featuredVideo");
+const b = document.getElementById("featuredPlay");
+
+function playInline() {
+if (!v) return;
+v.controls = true;
+v.play();
+b?.setAttribute("data-hidden","true");
+}
+
+function showOverlay() {
+b?.removeAttribute("data-hidden");
+if (v) v.controls = false;
+}
+
+b?.addEventListener("click", playInline);
+v?.addEventListener("click",()=>{ if(v.paused) playInline(); });
+v?.addEventListener("pause",showOverlay);
+v?.addEventListener("ended",showOverlay);
+})();
+</script>
+
+</body>
 </html>
