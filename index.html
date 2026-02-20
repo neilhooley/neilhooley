@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>Neil Hooley</title>
 
-  <!-- tiny critical CSS so layout never “jumps” -->
+  <!-- Prevent any flash/jump before style.css loads -->
   <style>
     .hero{position:relative;height:54vh;min-height:360px;max-height:640px;overflow:hidden;background:#f6f2ea}
-    .hero-video{position:absolute;top:0;left:0;width:100vw;height:100%;object-fit:cover;object-position:center;display:block}
+    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
     .hero-overlay{position:absolute;inset:0;background:rgba(246,242,234,.10);pointer-events:none}
     .site-title{position:absolute;top:26px;left:50%;transform:translateX(-50%);margin:0;z-index:3;color:#111;font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:20px;white-space:nowrap}
   </style>
@@ -18,7 +18,8 @@
 
 <body>
   <main class="page">
-    <!-- HERO -->
+
+    <!-- HERO LOOP -->
     <section class="hero" aria-label="Hero background">
       <h1 class="site-title">NEIL HOOLEY</h1>
 
@@ -40,8 +41,9 @@
 
     <!-- CONTENT -->
     <section class="content">
-      <!-- CARD -->
-      <div class="card" aria-label="Intro">
+
+      <!-- WHITE TEXT CARD -->
+      <section class="card" aria-label="Intro">
         <div class="card-grid">
           <div class="left">
             <p class="kicker">Hey there!</p>
@@ -60,11 +62,12 @@
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
-      <!-- FEATURED VIDEO (clean in-frame controls only) -->
-      <div class="featured" aria-label="Featured video">
+      <!-- FEATURED VIDEO (NO native controls, clean) -->
+      <section class="featured" aria-label="Featured video">
         <div class="featured-frame" id="featuredFrame">
+
           <video
             id="featuredVideo"
             class="featured-video"
@@ -76,17 +79,18 @@
             <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
           </video>
 
-          <!-- Center play/pause button (no text) -->
-          <button class="vidbtn vidbtn-center" id="ppBtn" type="button" aria-label="Play / Pause">
+          <!-- Center play/pause (always centered) -->
+          <button class="vbtn vbtn-center" id="ppBtn" type="button" aria-label="Play or pause">
             <span class="ppIcon" aria-hidden="true"></span>
           </button>
 
-          <!-- Fullscreen button (bottom-right, inside frame) -->
-          <button class="vidbtn vidbtn-fs" id="fsBtn" type="button" aria-label="Fullscreen">
+          <!-- Fullscreen (inside, bottom-right) -->
+          <button class="vbtn vbtn-fs" id="fsBtn" type="button" aria-label="Fullscreen">
             <span class="fsIcon" aria-hidden="true"></span>
           </button>
+
         </div>
-      </div>
+      </section>
 
       <!-- SOCIAL ICONS -->
       <nav class="social" aria-label="Social links">
@@ -112,6 +116,7 @@
       <footer class="footer" aria-label="Footer">
         <p class="copyright">© 2026 Kingdom Media</p>
       </footer>
+
     </section>
   </main>
 
@@ -120,8 +125,9 @@
       const v = document.getElementById("featuredVideo");
       const pp = document.getElementById("ppBtn");
       const fs = document.getElementById("fsBtn");
+      const frame = document.getElementById("featuredFrame");
 
-      function syncUI() {
+      function setState() {
         document.documentElement.classList.toggle("is-playing", !v.paused && !v.ended);
       }
 
@@ -134,29 +140,31 @@
       }
 
       function fullscreen() {
-        // Desktop / Android
-        const frame = document.getElementById("featuredFrame");
         if (frame.requestFullscreen) {
           frame.requestFullscreen().catch(()=>{});
           return;
         }
-        // iOS Safari fallback
         if (v.webkitEnterFullscreen) {
           v.webkitEnterFullscreen();
         }
       }
 
+      // Center button is always the main control
       pp.addEventListener("click", (e) => { e.stopPropagation(); togglePlay(); });
+
+      // Tap video toggles too (clean + intuitive)
       v.addEventListener("click", togglePlay);
 
+      // Fullscreen button
       fs.addEventListener("click", (e) => { e.stopPropagation(); fullscreen(); });
 
-      v.addEventListener("play", syncUI);
-      v.addEventListener("pause", syncUI);
-      v.addEventListener("ended", syncUI);
+      v.addEventListener("play", setState);
+      v.addEventListener("pause", setState);
+      v.addEventListener("ended", setState);
 
-      syncUI();
+      setState();
     })();
   </script>
+
 </body>
 </html>
