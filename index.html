@@ -1,169 +1,100 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Neil Hooley</title>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Neil Hooley</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Match the “I’M NEIL.” vibe (serif) + clean sans for everything else -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <!-- HERO (loop video top half) -->
+    <section class="hero" aria-label="Hero background">
+      <h1 class="site-title">NEIL HOOLEY</h1>
 
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-
-  <body>
-    <!-- HERO (top half background loop) -->
-    <header class="hero">
+      <!-- Loop background video (no audio) -->
       <video
-        class="hero__video"
+        class="hero-video"
         autoplay
         muted
         loop
         playsinline
         preload="auto"
-        poster="./assets/featured-poster.jpg"
-        aria-hidden="true"
-      >
-        <source
-          src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4"
-          type="video/mp4"
-        />
+        poster="assets/featured-poster.jpg">
+        <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
       </video>
 
-      <!-- very light overlay (keeps loop visible) -->
-      <div class="hero__tint" aria-hidden="true"></div>
+      <!-- light overlay -->
+      <div class="hero-overlay" aria-hidden="true"></div>
+    </section>
 
-      <div class="hero__top">
-        <div class="hero__name">NEIL HOOLEY</div>
+    <!-- CONTENT -->
+    <section class="content">
+      <div class="card">
+        <div class="card-grid">
+          <div class="left">
+            <p class="kicker">Hey there!</p>
+            <p class="headline">I’M NEIL.</p>
+          </div>
+
+          <div class="right">
+            <p class="lead">I’ve always believed stories shape us, and the right story can change everything.</p>
+
+            <p class="body">
+              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience, and a
+              deep love for storytelling to help others see their lives through the lens of redemption and purpose.
+            </p>
+
+            <p class="body">
+              Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely,
+              and discover the beauty of what God is writing in their own story.
+            </p>
+          </div>
+        </div>
       </div>
-    </header>
 
-    <!-- PAGE BACKGROUND (solid lower half) -->
-    <main class="page">
-      <!-- White card that overlaps hero -->
-      <section class="card" aria-label="Intro">
-        <div class="card__grid">
-          <div class="card__left">
-            <div class="kicker">Hey there!</div>
-            <h1 class="headline">I’M NEIL.</h1>
-          </div>
+      <!-- Featured video -->
+      <div class="featured">
+        <video
+          class="featured-video"
+          controls
+          preload="metadata"
+          poster="assets/featured-poster.jpg">
+          <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
+        </video>
+      </div>
 
-          <div class="card__right">
-            <div class="lead">
-              I’ve always believed stories shape us, and the right story can change everything.
-            </div>
+      <!-- Social icons only -->
+      <nav class="social" aria-label="Social links">
+        <a href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <!-- Facebook icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4v1.7H16l-.5 2.9h-2v7A10 10 0 0 0 22 12z"/>
+          </svg>
+        </a>
 
-            <p class="body">
-              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations,
-              lived experience, and a deep love for storytelling to help others see their lives
-              through the lens of redemption and purpose.
-            </p>
+        <a href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
+          <!-- Instagram icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5zM18.2 6.8a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
+          </svg>
+        </a>
 
-            <p class="body">
-              Through stories of faith, failure, and transformation, my work invites people to slow
-              down, listen closely, and discover the beauty of what God is writing in their own story.
-            </p>
-          </div>
-        </div>
-      </section>
+        <a href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank" rel="noopener" aria-label="YouTube">
+          <!-- YouTube icon -->
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
+          </svg>
+        </a>
+      </nav>
 
-      <!-- FEATURED VIDEO -->
-      <section class="featured" aria-label="Featured video">
-        <div class="featured__wrap">
-          <div class="featured__frame">
-            <video
-              id="featuredVideo"
-              class="featured__video"
-              preload="metadata"
-              playsinline
-              poster="./assets/featured-poster.jpg"
-              controls
-              controlslist="nodownload noplaybackrate"
-            >
-              <source
-                src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4"
-                type="video/mp4"
-              />
-            </video>
+      <!-- Footer (NO “Powered by Kajabi”) -->
+      <footer class="footer">
+        <p class="copyright">© 2026 Kingdom Media</p>
+      </footer>
+    </section>
 
-            <!-- Custom play button (no text) -->
-            <button id="playBtn" class="play" aria-label="Play video" type="button">
-              <span class="play__circle" aria-hidden="true">
-                <svg viewBox="0 0 64 64" class="play__icon" aria-hidden="true">
-                  <path d="M26 20v24l22-12-22-12z"></path>
-                </svg>
-              </span>
-            </button>
-          </div>
-        </div>
-
-        <!-- SOCIAL ICONS (icons only, below video) -->
-        <nav class="social" aria-label="Social links">
-          <a class="social__link" href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Facebook">
-            <!-- Facebook SVG -->
-            <svg viewBox="0 0 24 24" class="social__icon" aria-hidden="true">
-              <path
-                d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.5V12h2.7l-.4 2.9h-2.3v7A10 10 0 0 0 22 12z"
-              />
-            </svg>
-          </a>
-
-          <a class="social__link" href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
-            <!-- Instagram SVG -->
-            <svg viewBox="0 0 24 24" class="social__icon" aria-hidden="true">
-              <path
-                d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM18 6.8a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"
-              />
-            </svg>
-          </a>
-
-          <a class="social__link" href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank" rel="noreferrer" aria-label="YouTube">
-            <!-- YouTube SVG -->
-            <svg viewBox="0 0 24 24" class="social__icon" aria-hidden="true">
-              <path
-                d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"
-              />
-            </svg>
-          </a>
-        </nav>
-
-        <footer class="footer">
-          <div class="footer__copy">© 2026 Kingdom Media</div>
-          <div class="footer__sub">Powered by Kajabi</div>
-        </footer>
-      </section>
-    </main>
-
-    <script>
-      (function () {
-        const v = document.getElementById("featuredVideo");
-        const btn = document.getElementById("playBtn");
-
-        function setPlaying(isPlaying) {
-          document.documentElement.classList.toggle("is-playing", isPlaying);
-        }
-
-        btn.addEventListener("click", async () => {
-          try {
-            if (v.paused) {
-              await v.play();
-            } else {
-              v.pause();
-            }
-          } catch (e) {
-            // iOS sometimes blocks play until a user gesture; this click IS the gesture.
-          }
-        });
-
-        v.addEventListener("play", () => setPlaying(true));
-        v.addEventListener("pause", () => setPlaying(false));
-        v.addEventListener("ended", () => setPlaying(false));
-      })();
-    </script>
-  </body>
+  </main>
+</body>
 </html>
