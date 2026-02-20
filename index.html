@@ -1,111 +1,148 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neil Hooley</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neil Hooley</title>
 
-  <!-- Fonts (Kajabi-ish clean modern) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Clean, Kajabi-like sans -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="stylesheet" href="assets/style.css" />
-</head>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
 
-<body>
-  <!-- HERO -->
-  <header class="hero">
-    <!-- Background video (ALWAYS behind content) -->
-    <div class="hero__bg" aria-hidden="true">
+  <body>
+    <!-- HERO (top half only) -->
+    <header class="hero">
       <video
-        class="hero__bgVideo"
+        class="hero__video"
         autoplay
         muted
         loop
         playsinline
         preload="auto"
+        aria-hidden="true"
       >
-        <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
+        <source
+          src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4"
+          type="video/mp4"
+        />
       </video>
-      <div class="hero__overlay"></div>
-    </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
 
-    <!-- Foreground content -->
-    <div class="hero__content">
-      <div class="siteTitle">NEIL HOOLEY</div>
+      <div class="hero__top">
+        <div class="brand">NEIL HOOLEY</div>
+      </div>
+    </header>
 
-      <section class="card" role="region" aria-label="Intro">
+    <!-- SOLID BOTTOM BACKGROUND + CONTENT -->
+    <main class="page">
+      <!-- Text card: centered, slight overlap into hero -->
+      <section class="card" aria-label="Intro">
         <div class="card__grid">
           <div class="card__left">
-            <div class="card__kicker">Hey there!</div>
-            <h1 class="card__headline">I’M NEIL.</h1>
+            <div class="kicker">Hey there!</div>
+            <h1 class="headline">I’M NEIL.</h1>
           </div>
 
           <div class="card__right">
-            <p class="card__lead">
-              I’ve always believed stories shape us, and the right story can change everything.
+            <div class="subhead">
+              I’ve always believed stories shape us, and the right story can change
+              everything.
+            </div>
+
+            <p class="para">
+              As an entrepreneur, storyteller, and follower of Jesus, I use real
+              conversations, lived experience, and a deep love for storytelling to
+              help others see their lives through the lens of redemption and purpose.
             </p>
 
-            <p class="card__body">
-              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience,
-              and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
-            </p>
-
-            <p class="card__body">
-              Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely,
-              and discover the beauty of what God is writing in their own story.
+            <p class="para">
+              Through stories of faith, failure, and transformation, my work invites
+              people to slow down, listen closely, and discover the beauty of what God
+              is writing in their own story.
             </p>
           </div>
         </div>
       </section>
-    </div>
-  </header>
 
-  <!-- FEATURED VIDEO -->
-  <main class="page">
-    <section class="featured" aria-label="Featured video">
-      <div class="featured__wrap">
-        <div class="featured__videoFrame">
+      <!-- Featured video (NO text above it) -->
+      <section class="featured" aria-label="Featured Video">
+        <div class="featured__wrap">
           <video
             class="featured__video"
             controls
             playsinline
             preload="metadata"
-            poster="assets/featured-poster.jpg"
+            poster="./assets/featured-poster.jpg"
           >
-            <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
+            <source
+              src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4"
+              type="video/mp4"
+            />
           </video>
         </div>
+      </section>
 
+      <!-- Social icons below video, above copyright -->
+      <footer class="footer">
         <nav class="social" aria-label="Social links">
-          <a class="social__link" href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <a
+            class="social__link"
+            href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            title="Facebook"
+          >
             <!-- Facebook icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-3h2.4V9.7c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4V12H18l-.5 3h-2.9v7A10 10 0 0 0 22 12z"/>
+              <path
+                d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H16.7V4.8c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.6-4.6 4.6V11H6.7v3h2.7v8h4.1Z"
+              />
             </svg>
           </a>
 
-          <a class="social__link" href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <a
+            class="social__link"
+            href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            title="Instagram"
+          >
             <!-- Instagram icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.2a3.8 3.8 0 1 1 0 7.6 3.8 3.8 0 0 1 0-7.6zm0 2a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6zM18.2 6.6a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              <path
+                d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4A3.8 3.8 0 0 0 20 16.2V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 4.3a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm0 2a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM17.7 6.8a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"
+              />
             </svg>
           </a>
 
-          <a class="social__link" href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <a
+            class="social__link"
+            href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            title="YouTube"
+          >
             <!-- YouTube icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8zM10 15.3V8.7L16 12l-6 3.3z"/>
+              <path
+                d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.6 31.6 0 0 0 2 12a31.6 31.6 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 22 12a31.6 31.6 0 0 0-.4-4.8ZM10.3 15.2V8.8L15.8 12l-5.5 3.2Z"
+              />
             </svg>
           </a>
         </nav>
 
-        <footer class="footer">
-          <div class="footer__copy">© 2026 Kingdom Media</div>
-        </footer>
-      </div>
-    </section>
-  </main>
-</body>
+        <div class="copyright">© 2026 Kingdom Media</div>
+      </footer>
+    </main>
+  </body>
 </html>
