@@ -1,199 +1,288 @@
 :root {
-  --bg: #f6f1e8;          /* warm Kajabi-like solid */
-  --text: #1a1a1a;
-  --muted: #6f6f6f;
+  /* Kajabi-ish warm background */
+  --cream: #f6f1e7;
+  --ink: #111111;
+  --text: #4a4a4a;
+  --muted: #6b6b6b;
   --card: #ffffff;
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
-  --radius: 18px;
-  --max: 980px;
+
+  /* Layout */
+  --card-max: 980px;
+  --card-pad: 56px;
+  --card-radius: 0px; /* Kajabi page feels square/clean */
+  --video-radius: 12px;
+
+  /* Hero height: top half */
+  --hero-h: 54vh;
+  --hero-h-mobile: 52vh;
+
+  /* Card overlap into hero video */
+  --card-overlap: 110px;
+  --card-overlap-mobile: 90px;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
+  height: 100%;
+}
+
+body {
   margin: 0;
-  padding: 0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--cream);
   color: var(--text);
-  background: var(--bg);
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
 }
 
-/* HERO occupies top half only */
+/* --------------------
+   HERO (TOP HALF)
+--------------------- */
 .hero {
   position: relative;
-  height: 52vh;              /* top half feel */
-  min-height: 360px;
+  min-height: calc(var(--hero-h) + var(--card-overlap));
+  padding-top: 24px;
+  background: var(--cream);
+  overflow: hidden;
+}
+
+.hero__videoWrap {
+  position: absolute;
+  inset: 0;
+  height: var(--hero-h);
   width: 100%;
+  z-index: 0;
   overflow: hidden;
   background: #000;
 }
 
-/* keep video BEHIND everything */
 .hero__video {
-  position: absolute;
-  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;         /* no manual zoom tricks */
-  object-position: center;   /* stable center */
-  z-index: 0;
-  filter: none;              /* keep quality true */
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
+/* very light overlay (do NOT wash out) */
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.08); /* very light overlay */
-  z-index: 1;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
 }
 
-.hero__top {
+.hero__topTitle {
   position: relative;
   z-index: 2;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 22px;
-}
-
-.brand {
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  font-size: 18px;
-  color: #111;
-  text-transform: uppercase;
   text-align: center;
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 22px;
+  margin-top: 12px;
 }
 
-/* Solid bottom area */
-.page {
-  width: 100%;
-  padding: 0 18px 40px;
-}
-
-/* Card overlaps hero slightly (hang into video) */
+/* White card */
 .card {
-  max-width: var(--max);
-  margin: -86px auto 0;      /* overlap into hero */
+  position: relative;
+  z-index: 2;
+  width: min(var(--card-max), calc(100% - 72px));
+  margin: 0 auto;
   background: var(--card);
-  border-radius: 0;          /* Kajabi is very squared */
-  box-shadow: none;
-  padding: 44px 52px;
+  border-radius: var(--card-radius);
+  padding: var(--card-pad);
+  margin-top: calc(var(--hero-h) - var(--card-overlap));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
 .card__grid {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 42px;
+  grid-template-columns: 280px 1fr;
+  gap: 56px;
   align-items: start;
 }
 
-.kicker {
-  font-size: 14px;
+.card__kicker {
   font-weight: 600;
   color: var(--muted);
-  margin-bottom: 10px;
-}
-
-.headline {
-  margin: 0;
-  font-size: 54px;
-  letter-spacing: -0.02em;
-  line-height: 1;
-  font-weight: 800;
-}
-
-.subhead {
-  font-size: 22px;
-  font-weight: 800;
-  line-height: 1.25;
-  margin-top: 2px;
+  font-size: 16px;
   margin-bottom: 18px;
+}
+
+.card__headline {
+  font-family: "Playfair Display", Georgia, serif;
+  margin: 0;
+  font-size: 56px;
+  letter-spacing: 0.02em;
   color: #2a2a2a;
+  line-height: 1.0;
 }
 
-.para {
-  margin: 0 0 18px;
-  font-size: 16.5px;
-  line-height: 1.7;
-  color: #5b5b5b;
+.card__subhead {
+  margin: 0 0 18px 0;
+  font-weight: 700;
+  color: #3a3a3a;
+  font-size: 22px;
+  line-height: 1.35;
 }
 
-/* Featured video area */
+.card__p {
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #595959;
+}
+
+/* --------------------
+   BOTTOM SOLID SECTION
+--------------------- */
+.bottom {
+  background: var(--cream);
+  padding: 44px 0 56px;
+}
+
+.bottom__inner {
+  width: min(var(--card-max), calc(100% - 72px));
+  margin: 0 auto;
+}
+
+/* Featured video block */
 .featured {
-  max-width: var(--max);
-  margin: 34px auto 0;
+  margin-top: 18px;
 }
 
-.featured__wrap {
-  border-radius: var(--radius);
+.featured__frame {
+  position: relative;
+  border-radius: var(--video-radius);
   overflow: hidden;
-  background: transparent;
+  background: #000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+}
+
+/* Keep a cinematic ratio similar to Kajabi */
+.featured__frame::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 16:9 */
 }
 
 .featured__video {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  border-radius: var(--radius);
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Custom play overlay (NO text) */
+.featured__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.featured__play[data-hidden="true"] {
+  display: none;
+}
+
+.featured__playIcon {
+  width: 78px;
+  height: 78px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
+  position: relative;
+  backdrop-filter: blur(2px);
+}
+
+.featured__playIcon::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 24px;
+  border-style: solid;
+  border-width: 15px 0 15px 22px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.92);
+}
+
+/* Social icons (below video) */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 22px 0 10px;
+}
+
+.social__link {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.06);
+  transition: transform 120ms ease, background 120ms ease;
+  text-decoration: none;
+}
+
+.social__link:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.09);
+}
+
+.social__link svg {
+  width: 20px;
+  height: 20px;
+  fill: #4b4b4b;
 }
 
 /* Footer */
 .footer {
-  max-width: var(--max);
-  margin: 24px auto 0;
   text-align: center;
-  padding-bottom: 10px;
+  margin-top: 14px;
 }
 
-.social {
-  display: flex;
-  justify-content: center;
-  gap: 26px;
-  margin: 18px 0 18px;
+.footer__copy {
+  font-weight: 600;
+  color: #6a6a6a;
 }
 
-.social__link {
-  width: 34px;
-  height: 34px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #4b4b4b;
-  text-decoration: none;
-  opacity: 0.85;
+.footer__sub {
+  margin-top: 10px;
+  color: #9a9a9a;
 }
 
-.social__link:hover { opacity: 1; }
-
-.social__link svg {
-  width: 26px;
-  height: 26px;
-  fill: currentColor;
-}
-
-.copyright {
-  font-size: 14px;
-  color: #6b6b6b;
-}
-
-/* MOBILE: make it match phone-first */
+/* --------------------
+   MOBILE TUNING
+--------------------- */
 @media (max-width: 820px) {
-  .hero {
-    height: 56vh;
-    min-height: 420px;
+  :root {
+    --hero-h: var(--hero-h-mobile);
+    --card-pad: 26px;
   }
 
-  .brand {
-    font-size: 22px;
-    letter-spacing: 0.1em;
-    padding: 0 14px;
+  .hero {
+    min-height: calc(var(--hero-h) + var(--card-overlap-mobile));
+    padding-top: 18px;
+  }
+
+  .hero__topTitle {
+    font-size: 26px;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
   }
 
   .card {
-    margin: -120px auto 0;   /* stronger overlap like your phone screenshots */
-    padding: 28px 24px;
+    width: calc(100% - 28px);
+    padding: 28px;
+    margin-top: calc(var(--hero-h) - var(--card-overlap-mobile));
   }
 
   .card__grid {
@@ -201,26 +290,37 @@ html, body {
     gap: 18px;
   }
 
-  .headline {
-    font-size: 58px;
+  .card__headline {
+    font-size: 52px;
   }
 
-  .subhead {
-    font-size: 28px;
-    margin-bottom: 14px;
+  .card__subhead {
+    font-size: 22px;
   }
 
-  .para {
+  .card__p {
     font-size: 18px;
-    line-height: 1.85;
+    line-height: 1.9;
   }
 
-  .featured {
-    margin-top: 22px;
+  .bottom__inner {
+    width: calc(100% - 28px);
   }
 
-  .social {
-    gap: 22px;
-    margin: 14px 0 14px;
+  .featured__playIcon {
+    width: 84px;
+    height: 84px;
   }
+
+  .featured__playIcon::before {
+    left: 33px;
+    top: 25px;
+    border-width: 16px 0 16px 24px;
+  }
+}
+
+/* iOS Safari: avoid weird overlays */
+video {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
