@@ -1,244 +1,226 @@
-:root{
-  --bg: #f6f1e6;            /* warm Kajabi beige */
+:root {
+  --bg: #f6f1e8;          /* warm Kajabi-like solid */
+  --text: #1a1a1a;
+  --muted: #6f6f6f;
   --card: #ffffff;
-  --text: #2b2b2b;
-  --muted: #6a6a6a;
-  --icon: #6b6b6b;
-  --shadow: 0 14px 40px rgba(0,0,0,.10);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+  --radius: 18px;
+  --max: 980px;
 }
 
-*{ box-sizing: border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color: var(--text);
   background: var(--bg);
 }
 
-/* HERO (video behind everything) */
-.hero{
+/* HERO occupies top half only */
+.hero {
   position: relative;
-  min-height: 72vh;
+  height: 52vh;              /* top half feel */
+  min-height: 360px;
+  width: 100%;
   overflow: hidden;
+  background: #000;
 }
 
-.hero__bg{
-  position:absolute;
-  inset:0;
-  z-index:0;               /* ALWAYS behind */
+/* keep video BEHIND everything */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;         /* no manual zoom tricks */
+  object-position: center;   /* stable center */
+  z-index: 0;
+  filter: none;              /* keep quality true */
 }
 
-.hero__bgVideo{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit: cover;
-  object-position: 50% 25%; /* aim at face */
-  transform: scale(1.18);   /* zoom in a bit */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.08); /* very light overlay */
+  z-index: 1;
 }
 
-/* very light overlay so text reads, but video still shows */
-.hero__overlay{
-  position:absolute;
-  inset:0;
-  background: rgba(255,255,255,0.10);
-}
-
-.hero__content{
+.hero__top {
   position: relative;
-  z-index: 2;              /* ALWAYS above video */
-  width: min(1040px, calc(100% - 48px));
-  margin: 0 auto;
-  padding: 34px 0 0;
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 18px;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 22px;
 }
 
-.siteTitle{
+.brand {
   font-weight: 800;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  font-size: 20px;
+  letter-spacing: 0.12em;
+  font-size: 18px;
   color: #111;
-  text-align:center;
+  text-transform: uppercase;
+  text-align: center;
 }
 
-/* CARD */
-.card{
-  width:100%;
+/* Solid bottom area */
+.page {
+  width: 100%;
+  padding: 0 18px 40px;
+}
+
+/* Card overlaps hero slightly (hang into video) */
+.card {
+  max-width: var(--max);
+  margin: -86px auto 0;      /* overlap into hero */
   background: var(--card);
-  box-shadow: var(--shadow);
-  border-radius: 0;        /* Kajabi Encore look is usually square */
-  padding: 56px 56px;
+  border-radius: 0;          /* Kajabi is very squared */
+  box-shadow: none;
+  padding: 44px 52px;
 }
 
-.card__grid{
-  display:grid;
-  grid-template-columns: 260px 1fr;
-  gap: 48px;
+.card__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 42px;
   align-items: start;
 }
 
-.card__kicker{
-  font-weight: 600;
-  color: #444;
+.kicker {
   font-size: 14px;
-  margin: 0 0 18px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 10px;
 }
 
-.card__headline{
-  margin:0;
-  font-size: 44px;
-  line-height: 1.05;
-  letter-spacing: .02em;
+.headline {
+  margin: 0;
+  font-size: 54px;
+  letter-spacing: -0.02em;
+  line-height: 1;
   font-weight: 800;
-  color: #3b3b3b;
 }
 
-.card__lead{
-  margin: 0 0 16px;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.35;
-  color: #3b3b3b;
+.subhead {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-top: 2px;
+  margin-bottom: 18px;
+  color: #2a2a2a;
 }
 
-.card__body{
+.para {
   margin: 0 0 18px;
-  font-size: 15px;
-  line-height: 1.85;
-  color: #6a6a6a;
+  font-size: 16.5px;
+  line-height: 1.7;
+  color: #5b5b5b;
 }
 
-/* PAGE */
-.page{
-  background: var(--bg);
+/* Featured video area */
+.featured {
+  max-width: var(--max);
+  margin: 34px auto 0;
 }
 
-/* Featured section background slightly darker band like Encore */
-.featured{
-  padding: 42px 0 60px;
-  background: #ded3c8;
+.featured__wrap {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: transparent;
 }
 
-.featured__wrap{
-  width: min(1040px, calc(100% - 48px));
-  margin: 0 auto;
-  display:flex;
-  flex-direction: column;
-  align-items:center;
-  gap: 18px;
-}
-
-.featured__videoFrame{
-  width: min(920px, 100%);
-  border-radius: 14px;
-  overflow:hidden;
-  box-shadow: 0 18px 48px rgba(0,0,0,.14);
-  background:#000;
-}
-
-.featured__video{
-  display:block;
-  width:100%;
-  height:auto;
-}
-
-/* Social icons */
-.social{
-  display:flex;
-  gap: 26px;
-  align-items:center;
-  justify-content:center;
-  padding: 10px 0 6px;
-}
-
-.social__link{
-  width: 34px;
-  height: 34px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-}
-
-.social__link svg{
-  width: 28px;
-  height: 28px;
-  fill: var(--icon);
-  opacity: .9;
-}
-
-.social__link:active svg,
-.social__link:hover svg{
-  opacity: 1;
+.featured__video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
 }
 
 /* Footer */
-.footer{
-  padding-top: 6px;
-  text-align:center;
-  color:#6b6b6b;
-  font-size: 16px;
+.footer {
+  max-width: var(--max);
+  margin: 24px auto 0;
+  text-align: center;
+  padding-bottom: 10px;
 }
 
-/* MOBILE: phone-first tuning */
-@media (max-width: 760px){
-  .hero{
-    min-height: 78vh;
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 26px;
+  margin: 18px 0 18px;
+}
+
+.social__link {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #4b4b4b;
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.social__link:hover { opacity: 1; }
+
+.social__link svg {
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.copyright {
+  font-size: 14px;
+  color: #6b6b6b;
+}
+
+/* MOBILE: make it match phone-first */
+@media (max-width: 820px) {
+  .hero {
+    height: 56vh;
+    min-height: 420px;
   }
 
-  .hero__content{
-    width: calc(100% - 28px);
-    padding-top: 26px;
-    gap: 14px;
+  .brand {
+    font-size: 22px;
+    letter-spacing: 0.1em;
+    padding: 0 14px;
   }
 
-  .siteTitle{
-    font-size: 18px;
+  .card {
+    margin: -120px auto 0;   /* stronger overlap like your phone screenshots */
+    padding: 28px 24px;
   }
 
-  .card{
-    padding: 34px 28px;
-  }
-
-  .card__grid{
+  .card__grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .card__headline{
-    font-size: 44px;
+  .headline {
+    font-size: 58px;
   }
 
-  .card__lead{
-    font-size: 22px;
+  .subhead {
+    font-size: 28px;
+    margin-bottom: 14px;
   }
 
-  .card__body{
+  .para {
     font-size: 18px;
-    line-height: 1.9;
+    line-height: 1.85;
   }
 
-  .featured{
-    padding: 26px 0 44px;
+  .featured {
+    margin-top: 22px;
   }
 
-  .featured__wrap{
-    width: calc(100% - 28px);
+  .social {
+    gap: 22px;
+    margin: 14px 0 14px;
   }
-
-  .featured__videoFrame{
-    border-radius: 14px;
-  }
-}
-
-/* Safety: ensure hero video never overlaps later sections */
-.hero + .page{
-  position: relative;
-  z-index: 1;
 }
