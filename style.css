@@ -1,124 +1,268 @@
-body{margin:0;background:#f6f2ea;font-family:system-ui;color:#6f6a64}
+/* -------- Base -------- */
+:root{
+  --bg: #f6f1e8;
+  --text: #3f3f3f;
+  --muted: #6b6b6b;
+  --title: #000000;
+  --card: #ffffff;
+  --shadow: 0 12px 40px rgba(0,0,0,.08);
+  --radius: 14px;
+}
 
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* -------- HERO / Loop -------- */
 .hero{
-position:relative;
-height:55vh;
-overflow:hidden;
+  position: relative;
+  width: 100%;
+}
+
+.hero-media{
+  position: relative;
+  height: 48vh;           /* top half-ish */
+  min-height: 360px;
+  overflow: hidden;
+  background: #000;       /* fallback */
 }
 
 .hero-video{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* keeps it centered and fills */
+  object-position: center;
 }
 
-.overlay{
-position:absolute;
-inset:0;
-background:rgba(246,242,234,.12);
+.hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.06); /* very light overlay */
+  pointer-events: none;
 }
 
-.site-title{
-position:absolute;
-top:26px;
-left:50%;
-transform:translateX(-50%);
-color:#000;
-font-weight:900;
-letter-spacing:.14em;
-font-size:20px;
-z-index:5;
+.hero-title{
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  font-weight: 800;
+  letter-spacing: .08em;
+  font-size: 26px;
+  color: var(--title);    /* BLACK like you asked */
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+  pointer-events: none;
 }
 
-.main{padding:0 18px 40px}
+/* The beige solid area under the loop */
+.card-wrap{
+  position: relative;
+  z-index: 4; /* above loop */
+  margin-top: -110px; /* slight overlap on loop (like Kajabi) */
+  padding: 0 18px 40px;
+}
 
+/* White box that overlays the loop */
 .card{
-max-width:820px;
-margin:-90px auto 30px;
-background:#fff;
-padding:40px;
-position:relative;
-z-index:10;
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: 0;       /* Kajabi looks square */
+  box-shadow: var(--shadow);
+  padding: 52px 56px;
 }
 
-.kicker{font-weight:700}
+.card-grid{
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  column-gap: 56px;
+}
 
-.imneil{
-font-size:30px;
-margin:6px 0;
-font-weight:900;
+.kicker{
+  font-size: 18px;
+  color: #5a5a5a;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.headline{
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 44px;     /* smaller than before, closer to Kajabi */
+  letter-spacing: .01em;
+  margin: 0;
+  color: #3a3a3a;
+  font-weight: 700;
 }
 
 .lead{
-font-weight:900;
-font-size:18px;
+  font-size: 22px;
+  line-height: 1.35;
+  font-weight: 700;
+  color: #3f3f3f;
+  margin: 0 0 18px 0;
 }
 
-.video-wrap{
-max-width:920px;
-margin:0 auto;
-position:relative;
-border-radius:14px;
-overflow:hidden;
-background:#000;
+.card-right p{
+  margin: 0 0 18px 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #6a6a6a;
+}
+
+/* -------- Page / Featured Video -------- */
+.page{
+  padding: 0 18px 24px;
 }
 
 .featured{
-width:100%;
-display:block;
+  max-width: 980px;
+  margin: 0 auto;
+  padding-bottom: 22px;
 }
 
-.play{
-position:absolute;
-inset:0;
-background:none;
-border:0;
-cursor:pointer;
-display:grid;
-place-items:center;
+.video-box{
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #d7d0c7;
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-.play::before{
-content:"";
-width:64px;
-height:64px;
-border-radius:50%;
-background:rgba(40,40,40,.35);
+.featured-video{
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #000;
 }
 
-.play::after{
-content:"";
-position:absolute;
-border-style:solid;
-border-width:12px 0 12px 18px;
-border-color:transparent transparent transparent white;
-margin-left:4px;
+/* remove any weird spacing below videos */
+video{ vertical-align: middle; }
+
+/* Center play overlay */
+.play-overlay{
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
 }
 
-body.playing .play{opacity:0;pointer-events:none}
+.play-overlay svg{
+  width: 88px;
+  height: 88px;
+}
 
+.play-overlay circle{
+  fill: rgba(70,70,70,.45);
+}
+
+.play-overlay path{
+  fill: #ffffff;
+}
+
+/* -------- Social icons -------- */
 .social{
-display:flex;
-justify-content:center;
-gap:22px;
-margin:18px auto;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  padding: 18px 0 10px;
 }
 
-.social a{
-width:46px;
-height:46px;
-border-radius:50%;
-background:rgba(0,0,0,.06);
-display:grid;
-place-items:center;
+.social-btn{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  background: rgba(255,255,255,0.55);
 }
 
-.social svg{
-width:20px;
-height:20px;
-fill:#6b655f;
+.social-btn svg{
+  width: 22px;
+  height: 22px;
+  stroke: #6b6b6b;
+  fill: none;
+  stroke-width: 1.8;
 }
 
-footer{text-align:center;color:#7b746e}
+.social-btn svg path{
+  stroke: #6b6b6b;
+}
+
+.social-btn:hover{
+  background: rgba(255,255,255,0.75);
+}
+
+.footer{
+  text-align: center;
+  color: #6b6b6b;
+  font-size: 16px;
+  padding: 12px 0 0;
+}
+
+/* -------- Responsive (Phone first priority) -------- */
+@media (max-width: 760px){
+  .hero-media{
+    height: 52vh;
+    min-height: 420px;
+  }
+
+  .hero-title{
+    font-size: 28px;
+    top: 34px;
+  }
+
+  .card-wrap{
+    margin-top: -120px;
+    padding: 0 16px 34px;
+  }
+
+  .card{
+    padding: 34px 24px;
+  }
+
+  .card-grid{
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+
+  .headline{
+    font-size: 44px; /* closer to your reference */
+  }
+
+  .lead{
+    font-size: 26px;
+    margin-top: 8px;
+  }
+
+  .card-right p{
+    font-size: 20px;
+    line-height: 1.75;
+  }
+
+  .play-overlay svg{
+    width: 92px;
+    height: 92px;
+  }
+}
+
+/* Desktop centering guard (fixes “pushed left”) */
+@media (min-width: 761px){
+  .hero-media{
+    width: 100%;
+  }
+}
