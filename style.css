@@ -1,291 +1,196 @@
-:root {
-  /* Kajabi-ish warm background */
-  --cream: #f6f1e7;
-  --ink: #111111;
-  --text: #4a4a4a;
-  --muted: #6b6b6b;
-  --card: #ffffff;
+:root{
+--cream:#f6f1e7;
+--ink:#111;
+--text:#4a4a4a;
+--muted:#6b6b6b;
+--card:#fff;
 
-  /* Layout */
-  --card-max: 980px;
-  --card-pad: 56px;
-  --card-radius: 0px;
+--card-max:980px;
+--card-pad:56px;
 
-  --video-radius: 12px;
+--video-radius:12px;
 
-  /* Hero height: top half */
-  --hero-h: 54vh;
-  --hero-h-mobile: 52vh;
+--hero-h:54vh;
+--hero-h-mobile:52vh;
 
-  /* Card overlap into hero video */
-  --card-overlap: 110px;
-  --card-overlap-mobile: 90px;
+--card-overlap:110px;
+--card-overlap-mobile:90px;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box;}
 
-html, body { height: 100%; }
-
-body {
-  margin: 0;
-  background: var(--cream);
-  color: var(--text);
-  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+body{
+margin:0;
+background:var(--cream);
+color:var(--text);
+font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
 }
 
-/* -------------------- HERO (TOP HALF) --------------------- */
-.hero {
-  position: relative;
-  min-height: calc(var(--hero-h) + var(--card-overlap));
-  padding-top: 24px;
-  background: var(--cream);
-  overflow: hidden;
+/* HERO */
+.hero{
+position:relative;
+min-height:calc(var(--hero-h)+var(--card-overlap));
+padding-top:24px;
+overflow:hidden;
 }
 
-.hero__videoWrap {
-  position: absolute;
-  inset: 0;
-  height: var(--hero-h);
-  width: 100%;
-  z-index: 0;
-  overflow: hidden;
-  background: #000;
+.hero__videoWrap{
+position:absolute;
+inset:0;
+height:var(--hero-h);
+background:#000;
+overflow:hidden;
 }
 
-.hero__video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  display: block;
+.hero__video{
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-/* very light overlay (do NOT wash out) */
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.08);
-  pointer-events: none;
+.hero__overlay{
+position:absolute;
+inset:0;
+background:rgba(255,255,255,.08);
 }
 
-.hero__topTitle {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--ink);
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  font-size: 22px;
-  margin-top: 12px;
+.hero__topTitle{
+position:relative;
+z-index:2;
+text-align:center;
+font-weight:800;
+letter-spacing:.06em;
+font-size:22px;
+margin-top:12px;
 }
 
-/* White text card */
-.card {
-  position: relative;
-  z-index: 2;
-  width: min(var(--card-max), calc(100% - 72px));
-  margin: 0 auto;
-  background: var(--card);
-  border-radius: var(--card-radius);
-  padding: var(--card-pad);
-  margin-top: calc(var(--hero-h) - var(--card-overlap));
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+/* CARD */
+.card{
+position:relative;
+z-index:2;
+width:min(var(--card-max),calc(100% - 72px));
+margin:0 auto;
+background:var(--card);
+padding:var(--card-pad);
+margin-top:calc(var(--hero-h) - var(--card-overlap));
+box-shadow:0 10px 30px rgba(0,0,0,.06);
 }
 
-.card__grid {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 56px;
-  align-items: start;
+.card__grid{
+display:grid;
+grid-template-columns:280px 1fr;
+gap:56px;
 }
 
-.card__kicker {
-  font-weight: 600;
-  color: var(--muted);
-  font-size: 16px;
-  margin-bottom: 18px;
+.card__headline{
+font-family:"Playfair Display",serif;
+margin:0;
+font-size:28px;
 }
 
-/* 1) Headline smaller (half size) */
-.card__headline {
-  font-family: "Playfair Display", Georgia, serif;
-  margin: 0;
-  font-size: 28px; /* was 56px */
-  letter-spacing: 0.02em;
-  color: #2a2a2a;
-  line-height: 1.05;
+.card__subhead{
+margin:0 0 18px 0;
+font-weight:700;
+font-size:22px;
 }
 
-.card__subhead {
-  margin: 0 0 18px 0;
-  font-weight: 700;
-  color: #3a3a3a;
-  font-size: 22px;
-  line-height: 1.35;
+.card__p{
+font-size:15px;
+line-height:1.9;
 }
 
-.card__p {
-  margin: 0 0 16px 0;
-  font-size: 15px;
-  line-height: 1.9;
-  color: #595959;
+/* VIDEO */
+.featured__frame{
+position:relative;
+border-radius:var(--video-radius);
+overflow:hidden;
+background:#000;
+box-shadow:0 12px 30px rgba(0,0,0,.1);
 }
 
-/* -------------------- BOTTOM SOLID SECTION --------------------- */
-.bottom {
-  background: var(--cream);
-  padding: 44px 0 56px;
+.featured__frame::before{
+content:"";
+display:block;
+padding-top:56.25%;
 }
 
-.bottom__inner {
-  width: min(var(--card-max), calc(100% - 72px));
-  margin: 0 auto;
+.featured__video{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
 }
 
-/* Featured video block */
-.featured { margin-top: 18px; }
-
-.featured__frame {
-  position: relative;
-  border-radius: var(--video-radius);
-  overflow: hidden;
-  background: #000;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+.featured__play{
+position:absolute;
+inset:0;
+display:grid;
+place-items:center;
+background:transparent;
+border:0;
+cursor:pointer;
 }
 
-/* Keep a cinematic ratio similar to Kajabi */
-.featured__frame::before {
-  content: "";
-  display: block;
-  padding-top: 56.25%;
+.featured__playIcon{
+width:78px;
+height:78px;
+border-radius:999px;
+background:rgba(0,0,0,.35);
+position:relative;
 }
 
-.featured__video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.featured__playIcon::before{
+content:"";
+position:absolute;
+left:30px;
+top:24px;
+border-style:solid;
+border-width:15px 0 15px 22px;
+border-color:transparent transparent transparent #fff;
 }
 
-/* Custom play overlay (NO text) */
-.featured__play {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
+/* ⭐️ PREMIUM SOCIAL ICONS */
+.social{
+display:flex;
+justify-content:center;
+gap:20px;
+margin:24px 0 12px;
 }
 
-.featured__play[data-hidden="true"] { display: none; }
-
-.featured__playIcon {
-  width: 78px;
-  height: 78px;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.35);
-  position: relative;
-  backdrop-filter: blur(2px);
+.social__link{
+width:44px;
+height:44px;
+display:grid;
+place-items:center;
+border-radius:999px;
+background:rgba(0,0,0,.04);
+transition:.2s ease;
+color:#4b4b4b;
 }
 
-.featured__playIcon::before {
-  content: "";
-  position: absolute;
-  left: 30px;
-  top: 24px;
-  border-style: solid;
-  border-width: 15px 0 15px 22px;
-  border-color: transparent transparent transparent rgba(255, 255, 255, 0.92);
+.social__link:hover{
+transform:translateY(-2px);
+background:rgba(0,0,0,.08);
 }
 
-/* 2) Social icons cleaner (Kajabi-ish) */
-.social {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin: 22px 0 10px;
+.social__link svg{
+width:20px;
+height:20px;
+fill:none;
+stroke:currentColor;
+stroke-width:1.6;
+stroke-linecap:round;
+stroke-linejoin:round;
 }
 
-.social__link {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.04);
-  color: #4b4b4b; /* controls SVG fill via currentColor */
-  transition: transform 120ms ease, background 120ms ease;
-  text-decoration: none;
+/* FOOTER */
+.footer{
+text-align:center;
+margin-top:14px;
 }
 
-.social__link:hover {
-  transform: translateY(-1px);
-  background: rgba(0, 0, 0, 0.07);
-}
-
-.social__link svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor; /* makes ALL icons consistent */
-}
-
-/* Footer */
-.footer {
-  text-align: center;
-  margin-top: 14px;
-}
-
-.footer__copy {
-  font-weight: 600;
-  color: #6a6a6a;
-}
-
-/* -------------------- MOBILE TUNING --------------------- */
-@media (max-width: 820px) {
-  :root { --hero-h: var(--hero-h-mobile); --card-pad: 26px; }
-
-  .hero {
-    min-height: calc(var(--hero-h) + var(--card-overlap-mobile));
-    padding-top: 18px;
-  }
-
-  .hero__topTitle {
-    font-size: 26px;
-    margin-top: 8px;
-    letter-spacing: 0.05em;
-  }
-
-  .card {
-    width: calc(100% - 28px);
-    padding: 28px;
-    margin-top: calc(var(--hero-h) - var(--card-overlap-mobile));
-  }
-
-  .card__grid { grid-template-columns: 1fr; gap: 18px; }
-
-  /* Headline still smaller on mobile */
-  .card__headline { font-size: 26px; }
-
-  .card__subhead { font-size: 22px; }
-
-  .card__p { font-size: 18px; line-height: 1.9; }
-
-  .bottom__inner { width: calc(100% - 28px); }
-
-  .featured__playIcon { width: 84px; height: 84px; }
-
-  .featured__playIcon::before {
-    left: 33px;
-    top: 25px;
-    border-width: 16px 0 16px 24px;
-  }
-}
-
-/* iOS Safari: avoid weird overlays */
-video {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+.footer__copy{
+font-weight:600;
+color:#6a6a6a;
 }
