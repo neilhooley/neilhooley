@@ -21,11 +21,12 @@ body{
 }
 .hero-video{
   position:absolute;
-  top:0;left:0;
-  width:100vw;
+  inset:0;
+  width:100%;
   height:100%;
   object-fit:cover;
   object-position:center;
+  display:block;
 }
 .hero-overlay{
   position:absolute;
@@ -52,7 +53,7 @@ body{
 .content{
   position:relative;
   background:#f6f2ea;
-  padding:0 18px 44px;
+  padding:0 18px 36px;
 }
 
 /* CARD */
@@ -60,18 +61,19 @@ body{
   position:relative;
   z-index:10;
   max-width:880px;
-  margin:-90px auto 26px;
+  margin:-90px auto 18px;
   background:#fff;
-  padding:44px 46px;
+  padding:40px 44px;
 }
 .card-grid{
   display:grid;
   grid-template-columns:1fr 1.55fr;
-  gap:34px;
+  gap:32px;
   align-items:start;
 }
+
 .kicker{
-  margin:0 0 12px;
+  margin:0 0 10px;
   font-weight:800;
   color:#6e6a64;
   font-size:18px;
@@ -80,27 +82,27 @@ body{
   margin:0;
   font-weight:900;
   color:#3f3a35;
-  font-size:38px;
+  font-size:36px;
   line-height:1.08;
 }
 .lead{
-  margin:0 0 18px;
+  margin:0 0 12px;
   font-weight:900;
   color:#3f3a35;
-  font-size:18px;
-  line-height:1.45;
+  font-size:16px;
+  line-height:1.5;
 }
 .body{
-  margin:0 0 18px;
-  font-size:18px;
-  line-height:1.8;
+  margin:0 0 12px;
+  font-size:16px;
+  line-height:1.75;
   color:#6f6a64;
 }
 
 /* FEATURED VIDEO */
 .featured{
   max-width:920px;
-  margin:0 auto 14px;
+  margin:0 auto 10px;
 }
 .featured-frame{
   position:relative;
@@ -114,16 +116,16 @@ body{
   height:auto;
   aspect-ratio:16/9;
   display:block;
+  background:#000;
 }
 
-/* IMPORTANT: no native controls below the video */
-.featured-video{outline:none}
+/* Never show any native controls (prevents “little boxes” under video) */
 .featured-video::-webkit-media-controls{display:none!important}
 .featured-video::-webkit-media-controls-enclosure{display:none!important}
 .featured-video::-webkit-media-controls-panel{display:none!important}
 
 /* In-frame controls */
-.vidbtn{
+.vbtn{
   position:absolute;
   border:0;
   background:transparent;
@@ -132,71 +134,66 @@ body{
 }
 
 /* Center play/pause button */
-.vidbtn-center{
+.vbtn-center{
   inset:0;
   display:grid;
   place-items:center;
 }
 .ppIcon{
-  width:64px;
-  height:64px;
+  width:56px;
+  height:56px;
   border-radius:999px;
-  background:rgba(40,40,40,.28);
+  background:rgba(40,40,40,.20);
   backdrop-filter:blur(1px);
   position:relative;
 }
 
-/* PLAY icon by default (triangle) */
+/* Play icon default */
 .ppIcon::before{
   content:"";
   position:absolute;
-  left:26px;
-  top:20px;
+  left:23px;
+  top:18px;
   border-style:solid;
-  border-width:12px 0 12px 18px;
+  border-width:10px 0 10px 16px;
   border-color:transparent transparent transparent rgba(255,255,255,.92);
 }
 
-/* When playing: show PAUSE icon (two bars) */
+/* Pause icon when playing */
 html.is-playing .ppIcon::before{
   content:"";
   position:absolute;
-  left:23px;
-  top:20px;
+  left:20px;
+  top:17px;
   width:6px;
-  height:24px;
+  height:22px;
   background:rgba(255,255,255,.92);
   border:none;
 }
 html.is-playing .ppIcon::after{
   content:"";
   position:absolute;
-  left:35px;
-  top:20px;
+  left:32px;
+  top:17px;
   width:6px;
-  height:24px;
+  height:22px;
   background:rgba(255,255,255,.92);
 }
 
-/* Keep button visible but subtle when playing */
-html.is-playing .ppIcon{
-  background:rgba(40,40,40,.18);
-}
-
 /* Fullscreen button bottom-right */
-.vidbtn-fs{
+.vbtn-fs{
   right:10px;
   bottom:10px;
-  width:38px;
-  height:38px;
+  width:34px;
+  height:34px;
   border-radius:999px;
-  background:rgba(40,40,40,.22);
+  background:rgba(40,40,40,.18);
   display:grid;
   place-items:center;
 }
 .fsIcon{
-  width:16px;
-  height:16px;
+  width:15px;
+  height:15px;
   position:relative;
 }
 .fsIcon::before{
@@ -208,12 +205,12 @@ html.is-playing .ppIcon{
   border-bottom:0;
 }
 
-/* SOCIAL ICONS (match the “best version” look) */
+/* SOCIAL ICONS */
 .social{
   display:flex;
   justify-content:center;
   gap:22px;
-  margin:18px auto 18px;
+  margin:16px auto 14px;
   align-items:center;
 }
 .social a{
@@ -238,7 +235,7 @@ html.is-playing .ppIcon{
 /* FOOTER */
 .footer{
   text-align:center;
-  padding:8px 0 18px;
+  padding:6px 0 14px;
   color:#7b746e;
 }
 .copyright{
@@ -247,22 +244,24 @@ html.is-playing .ppIcon{
   font-weight:600;
 }
 
-/* MOBILE */
+/* MOBILE (tight + centered + less scrolling) */
 @media (max-width:780px){
-  .hero{height:52vh;min-height:320px;max-height:520px}
+  .hero{height:50vh;min-height:300px;max-height:520px}
   .site-title{top:22px;font-size:18px}
+
+  .content{padding:0 16px 30px}
 
   .card{
     max-width:560px;
-    margin:-78px auto 18px;
-    padding:34px 26px;
+    margin:-72px auto 14px;
+    padding:26px 20px;
   }
-  .card-grid{grid-template-columns:1fr;gap:18px}
+  .card-grid{grid-template-columns:1fr;gap:14px}
 
-  .headline{font-size:34px}
-  .kicker{font-size:20px}
-  .lead,.body{font-size:18px}
-  .featured{max-width:560px}
+  .kicker{font-size:18px;margin-bottom:8px}
+  .headline{font-size:32px}
+  .lead{font-size:16px;margin-bottom:10px}
+  .body{font-size:16px;line-height:1.7;margin-bottom:10px}
 
-  .ppIcon{width:62px;height:62px}
+  .ppIcon{width:52px;height:52px}
 }
