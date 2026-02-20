@@ -1,268 +1,326 @@
-/* Base */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body{
-  margin:0;
-  background:#f6f2ea;
-  color:#6f6a64;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-  -webkit-font-smoothing: antialiased;
+:root {
+  /* Kajabi-ish warm background */
+  --cream: #f6f1e7;
+  --ink: #111111;
+  --text: #4a4a4a;
+  --muted: #6b6b6b;
+  --card: #ffffff;
+
+  /* Layout */
+  --card-max: 980px;
+  --card-pad: 56px;
+  --card-radius: 0px; /* Kajabi page feels square/clean */
+  --video-radius: 12px;
+
+  /* Hero height: top half */
+  --hero-h: 54vh;
+  --hero-h-mobile: 52vh;
+
+  /* Card overlap into hero video */
+  --card-overlap: 110px;
+  --card-overlap-mobile: 90px;
 }
 
-/* HERO */
-.hero{
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+}
+
+/* --------------------
+   HERO (TOP HALF)
+--------------------- */
+.hero {
   position: relative;
-  height: 54vh;
-  min-height: 360px;
-  max-height: 640px;
+  min-height: calc(var(--hero-h) + var(--card-overlap));
+  padding-top: 24px;
+  background: var(--cream);
   overflow: hidden;
-  background:#f6f2ea;
 }
 
-/* Ensure loop fills and centers on desktop */
-.hero-video{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
+.hero__videoWrap {
+  position: absolute;
+  inset: 0;
+  height: var(--hero-h);
+  width: 100%;
+  z-index: 0;
+  overflow: hidden;
+  background: #000;
+}
+
+.hero__video {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center center;
-  display:block;
+  object-position: center;
+  display: block;
 }
 
-/* Light overlay only */
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background: rgba(246,242,234,.10);
-  pointer-events:none;
+/* very light overlay (do NOT wash out) */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
 }
 
-/* Title must be black and centered */
-.site-title{
-  position:absolute;
-  top:26px;
-  left:50%;
-  transform:translateX(-50%);
-  margin:0;
-  z-index:3;
-  color:#111;
-  font-weight:900;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  font-size:20px;
-  white-space:nowrap;
-}
-
-/* CONTENT */
-.content{
+.hero__topTitle {
   position: relative;
-  background:#f6f2ea;
-  padding: 0 18px 44px;
+  z-index: 2;
+  text-align: center;
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  font-size: 22px;
+  margin-top: 12px;
 }
 
-/* Card above loop, overlaps hero bottom */
-.card{
+/* White card */
+.card {
   position: relative;
-  z-index: 10;
-  max-width: 880px;
-  margin: -90px auto 26px;
-  background: #fff;
-  padding: 44px 46px;
+  z-index: 2;
+  width: min(var(--card-max), calc(100% - 72px));
+  margin: 0 auto;
+  background: var(--card);
+  border-radius: var(--card-radius);
+  padding: var(--card-pad);
+  margin-top: calc(var(--hero-h) - var(--card-overlap));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
 
-/* Desktop two columns */
-.card-grid{
-  display:grid;
-  grid-template-columns: 1fr 1.55fr;
-  gap:34px;
-  align-items:start;
+.card__grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 56px;
+  align-items: start;
 }
 
-.kicker{
-  margin:0 0 12px;
-  font-weight:800;
-  color:#6e6a64;
-  font-size:18px;
+.card__kicker {
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 16px;
+  margin-bottom: 18px;
 }
 
-/* Smaller I'M NEIL on desktop + phone */
-.headline{
-  margin:0;
-  font-weight:900;
-  color:#3f3a35;
-  letter-spacing:.01em;
-  font-size: 38px;   /* reduced */
-  line-height: 1.08;
+.card__headline {
+  font-family: "Playfair Display", Georgia, serif;
+  margin: 0;
+  font-size: 56px;
+  letter-spacing: 0.02em;
+  color: #2a2a2a;
+  line-height: 1.0;
 }
 
-.lead{
-  margin:0 0 18px;
-  font-weight:900;
-  color:#3f3a35;
-  font-size:18px; /* same size as body */
-  line-height:1.45;
+.card__subhead {
+  margin: 0 0 18px 0;
+  font-weight: 700;
+  color: #3a3a3a;
+  font-size: 22px;
+  line-height: 1.35;
 }
 
-.body{
-  margin:0 0 18px;
-  font-size:18px;
-  line-height:1.8;
-  color:#6f6a64;
+.card__p {
+  margin: 0 0 16px 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: #595959;
 }
 
-/* Featured video area (no pop/glitch now that html.ready controls opacity) */
-.featured{
-  max-width: 920px;
-  margin: 0 auto 14px;
-  opacity: 0;
-  transition: opacity .12s ease;
+/* --------------------
+   BOTTOM SOLID SECTION
+--------------------- */
+.bottom {
+  background: var(--cream);
+  padding: 44px 0 56px;
 }
-html.ready .featured{ opacity:1; }
 
-/* Featured frame */
-.featured-frame{
+.bottom__inner {
+  width: min(var(--card-max), calc(100% - 72px));
+  margin: 0 auto;
+}
+
+/* Featured video block */
+.featured {
+  margin-top: 18px;
+}
+
+.featured__frame {
   position: relative;
-  border-radius: 14px;
+  border-radius: var(--video-radius);
   overflow: hidden;
-  background:#000;
+  background: #000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
-/* Keep the video in-place */
-.featured-video{
-  width:100%;
-  height:auto;
-  display:block;
-  aspect-ratio: 16 / 9;
+/* Keep a cinematic ratio similar to Kajabi */
+.featured__frame::before {
+  content: "";
+  display: block;
+  padding-top: 56.25%; /* 16:9 */
 }
 
-/* Hide native controls (prevents iPhone fullscreen trigger via native UI) */
-.featured-video::-webkit-media-controls { display:none !important; }
-.featured-video::-webkit-media-controls-enclosure { display:none !important; }
-
-/* Overlay buttons */
-.vbtn{
-  position:absolute;
-  border:0;
-  background:transparent;
-  padding:0;
-  cursor:pointer;
+.featured__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-/* Big play button centered */
-.vbtn-play{
-  inset:0;
-  display:grid;
-  place-items:center;
+/* Custom play overlay (NO text) */
+.featured__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
 }
-.play-circle{
-  width:92px;
-  height:92px;
-  border-radius:999px;
-  background: rgba(40,40,40,.35);
-  backdrop-filter: blur(1px);
+
+.featured__play[data-hidden="true"] {
+  display: none;
+}
+
+.featured__playIcon {
+  width: 78px;
+  height: 78px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.35);
   position: relative;
+  backdrop-filter: blur(2px);
 }
-.play-circle::before{
-  content:"";
-  position:absolute;
-  left: 38px;
-  top: 30px;
+
+.featured__playIcon::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  top: 24px;
   border-style: solid;
-  border-width: 16px 0 16px 24px;
-  border-color: transparent transparent transparent rgba(255,255,255,.92);
+  border-width: 15px 0 15px 22px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.92);
 }
 
-/* Hide play overlay while playing */
-html.playing .vbtn-play{ opacity:0; pointer-events:none; transition: opacity .12s ease; }
+/* Social icons (below video) */
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin: 22px 0 10px;
+}
 
-/* Expand button bottom-right */
-.vbtn-expand{
-  right: 12px;
-  bottom: 12px;
+.social__link {
   width: 42px;
   height: 42px;
+  display: grid;
+  place-items: center;
   border-radius: 999px;
-  background: rgba(40,40,40,.28);
-  display:grid;
-  place-items:center;
-}
-.expand-icon{
-  width: 18px;
-  height: 18px;
-  position: relative;
-}
-.expand-icon::before,
-.expand-icon::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border: 2px solid rgba(255,255,255,.85);
-  border-left: 0;
-  border-bottom: 0;
-  transform: rotate(0deg);
+  background: rgba(0, 0, 0, 0.06);
+  transition: transform 120ms ease, background 120ms ease;
+  text-decoration: none;
 }
 
-/* Social icons */
-.social{
-  display:flex;
-  justify-content:center;
-  gap:22px;
-  margin:18px auto 18px;
-  align-items:center;
-}
-.social a{
-  width:46px;
-  height:46px;
-  border-radius:999px;
-  display:grid;
-  place-items:center;
-  background: rgba(0,0,0,.06);
-  transition: transform .15s ease, background .15s ease;
-}
-.social a:hover{
+.social__link:hover {
   transform: translateY(-1px);
-  background: rgba(0,0,0,.10);
+  background: rgba(0, 0, 0, 0.09);
 }
-.social svg{
-  width:20px;
-  height:20px;
-  fill:#6b655f;
+
+.social__link svg {
+  width: 20px;
+  height: 20px;
+  fill: #4b4b4b;
 }
 
 /* Footer */
-.footer{
-  text-align:center;
-  padding: 8px 0 18px;
-  color:#7b746e;
-}
-.copyright{
-  margin:0;
-  font-size:16px;
-  font-weight:600;
+.footer {
+  text-align: center;
+  margin-top: 14px;
 }
 
-/* Mobile */
-@media (max-width: 780px){
-  .hero{
-    height: 52vh;
-    min-height: 320px;
-    max-height: 520px;
+.footer__copy {
+  font-weight: 600;
+  color: #6a6a6a;
+}
+
+.footer__sub {
+  margin-top: 10px;
+  color: #9a9a9a;
+}
+
+/* --------------------
+   MOBILE TUNING
+--------------------- */
+@media (max-width: 820px) {
+  :root {
+    --hero-h: var(--hero-h-mobile);
+    --card-pad: 26px;
   }
-  .site-title{
-    top:22px;
-    font-size:18px;
+
+  .hero {
+    min-height: calc(var(--hero-h) + var(--card-overlap-mobile));
+    padding-top: 18px;
   }
-  .card{
-    max-width: 560px;
-    margin: -78px auto 18px;
-    padding: 34px 26px;
+
+  .hero__topTitle {
+    font-size: 26px;
+    margin-top: 8px;
+    letter-spacing: 0.05em;
   }
-  .card-grid{
+
+  .card {
+    width: calc(100% - 28px);
+    padding: 28px;
+    margin-top: calc(var(--hero-h) - var(--card-overlap-mobile));
+  }
+
+  .card__grid {
     grid-template-columns: 1fr;
-    gap:18px;
+    gap: 18px;
   }
-  .headline{ font-size: 34px; } /* smaller on phone */
-  .kicker{ font-size: 20px; }
-  .lead, .body{ font-size:18px; }
+
+  .card__headline {
+    font-size: 52px;
+  }
+
+  .card__subhead {
+    font-size: 22px;
+  }
+
+  .card__p {
+    font-size: 18px;
+    line-height: 1.9;
+  }
+
+  .bottom__inner {
+    width: calc(100% - 28px);
+  }
+
+  .featured__playIcon {
+    width: 84px;
+    height: 84px;
+  }
+
+  .featured__playIcon::before {
+    left: 33px;
+    top: 25px;
+    border-width: 16px 0 16px 24px;
+  }
+}
+
+/* iOS Safari: avoid weird overlays */
+video {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
