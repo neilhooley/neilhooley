@@ -1,191 +1,151 @@
 /* =========
-   Reset
+   Base
 ========= */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   margin: 0;
+  background: #f6f2ea; /* warm off-white */
+  color: #6f6a64;
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-  color: #4f4a44;
-  background: #f6f2ea; /* Kajabi-like warm off-white */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-img, video { max-width: 100%; display: block; }
-a { color: inherit; text-decoration: none; }
+a { text-decoration: none; color: inherit; }
+img, video { display: block; max-width: 100%; }
 
 /* =========
-   Layout
+   HERO
+   (video loop top half)
 ========= */
-.page {
-  width: 100%;
-  min-height: 100%;
-  overflow-x: hidden;
-}
-
-/* Top hero (video loop) should be top half-ish */
 .hero {
   position: relative;
-  height: 54vh;                 /* top half feel */
+  height: 54vh;
   min-height: 360px;
-  max-height: 620px;
-  background: #f6f2ea;          /* fallback while video loads */
+  max-height: 640px;
   overflow: hidden;
+  background: #f6f2ea;
+  z-index: 0; /* background layer */
 }
 
-/* Loop video layer */
-.hero video,
-.hero .hero-video,
-.hero .hero-loop {
+/* Title over loop */
+.site-title {
+  position: absolute;
+  top: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  z-index: 3;
+  color: #111; /* black */
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 20px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Loop video itself */
+.hero-video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;            /* DO NOT zoom manually */
+  object-fit: cover;
   object-position: center;
-  z-index: 0;
-}
-
-/* Very light overlay so video is visible but soft */
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: rgba(246, 242, 234, 0.10); /* very light */
   z-index: 1;
-  pointer-events:none;
 }
 
-/* Title over the loop */
-.site-title,
-.header-title,
-.top-title {
+/* slight overlay only (does NOT cover content card) */
+.hero-overlay {
   position: absolute;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
+  inset: 0;
   z-index: 2;
-  margin: 0;
-  letter-spacing: 0.14em;
-  font-weight: 800;
-  font-size: 20px;
-  color: #111111; /* MUST be black */
-  text-align: center;
-  text-transform: uppercase;
-  white-space: nowrap;
+  background: rgba(246, 242, 234, 0.10);
+  pointer-events: none;
 }
 
-/* Main content area under hero */
-.main {
+/* =========
+   CONTENT (solid bottom half)
+========= */
+.content {
   position: relative;
   background: #f6f2ea;
-  padding: 0 18px 44px;
+  padding: 0 18px 40px;
+  z-index: 5; /* ensure content is above hero */
 }
 
-/* White box that slightly overlaps the bottom of the loop */
-.card,
-.content-card,
-.text-card {
+/* White card overlaps hero bottom */
+.card {
   position: relative;
-  z-index: 3;                   /* ABOVE video loop */
-  max-width: 860px;             /* desktop box width */
-  margin: -92px auto 28px;      /* pulls up into the loop */
-  background: #ffffff;
-  padding: 42px 44px;
-  box-shadow: none;
+  z-index: 10; /* ALWAYS above loop */
+  max-width: 880px;
+  margin: -90px auto 26px;
+  background: #fff;
+  padding: 44px 46px;
 }
 
-/* Two-column layout on desktop like Kajabi */
-.card-grid,
-.card-inner,
-.content-grid {
+/* desktop 2 columns */
+.card-grid {
   display: grid;
   grid-template-columns: 1fr 1.55fr;
   gap: 34px;
   align-items: start;
 }
 
-/* Typography (match Kajabi feel) */
-.kicker,
-.hey,
-.small-hello {
-  margin: 0 0 10px;
-  font-weight: 700;
-  color: #6d6862;
+/* Typography */
+.kicker {
+  margin: 0 0 12px;
+  font-weight: 800;
+  color: #6e6a64;
   font-size: 18px;
 }
 
-.h1,
-.headline,
-.big-name,
-.card h1,
-.card .headline {
-  margin: 0 0 14px;
-  font-weight: 800;
-  letter-spacing: 0.01em;
-  color: #3e3a35;
-  /* Smaller than before; still prominent */
-  font-size: clamp(34px, 4vw, 48px);
-  line-height: 1.02;
-}
-
-/* Bold sentence should be SAME size as body, just bold */
-.lead,
-.first-bold,
-.bold-line {
-  margin: 10px 0 18px;
-  font-weight: 800;
+.headline {
+  margin: 0;
+  font-weight: 900;
   color: #3f3a35;
-  font-size: 18px;  /* same as body below */
-  line-height: 1.35;
+  letter-spacing: 0.01em;
+  /* SMALLER than before */
+  font-size: 44px;
+  line-height: 1.05;
 }
 
-/* Body */
-.body,
-.copy,
-.card p,
-.card .copy p {
+/* Bold line same size as body */
+.lead {
+  margin: 0 0 18px;
+  font-weight: 900;
+  color: #3f3a35;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+.body {
   margin: 0 0 18px;
   font-size: 18px;
-  line-height: 1.75;
-  color: #706b65;
+  line-height: 1.8;
+  color: #6f6a64;
 }
 
 /* =========
-   Featured Video Block
+   Featured video (bottom, no text labels)
 ========= */
-.featured,
-.video-section,
-.video-wrap {
+.featured {
   max-width: 920px;
-  margin: 0 auto 18px;
-  padding: 0 0 0;
+  margin: 0 auto 14px;
 }
 
-.video-frame,
-.video-box,
-.video-embed {
-  position: relative;
+.featured-video {
+  width: 100%;
   border-radius: 14px;
   overflow: hidden;
   background: #ddd;
 }
 
-/* If you use <video> for the featured video */
-.video-frame video,
-.video-box video,
-.video-embed video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
 /* =========
-   Social Icons (icons only)
+   Social icons (icons only)
 ========= */
-.social,
-.social-icons {
+.social {
   display: flex;
   justify-content: center;
   gap: 22px;
@@ -193,11 +153,9 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
 }
 
-/* icon links */
-.social a,
-.social-icons a {
-  width: 40px;
-  height: 40px;
+.social a {
+  width: 46px;
+  height: 46px;
   border-radius: 999px;
   display: grid;
   place-items: center;
@@ -205,60 +163,34 @@ a { color: inherit; text-decoration: none; }
   transition: transform .15s ease, background .15s ease;
 }
 
-.social a:hover,
-.social-icons a:hover {
+.social a:hover {
   transform: translateY(-1px);
   background: rgba(0,0,0,0.10);
 }
 
-/* SVG icons */
-.social a svg,
-.social-icons a svg {
-  width: 18px;
-  height: 18px;
-  fill: #5f5a54;
-}
-
-/* Font-icon fallback (if using <i>) */
-.social a i,
-.social-icons a i {
-  font-size: 18px;
-  color: #5f5a54;
+.social svg {
+  width: 20px;
+  height: 20px;
+  fill: #6b655f; /* Kajabi-like muted icon color */
 }
 
 /* =========
-   Footer
+   Footer (no Powered by Kajabi)
 ========= */
-.footer,
-.site-footer {
+.footer {
   text-align: center;
-  padding: 10px 18px 34px;
+  padding: 8px 0 18px;
   color: #7b746e;
 }
 
-/* keep only © 2026 Kingdom Media */
-.footer .copyright,
-.site-footer .copyright {
+.footer .copyright {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
 }
 
-/* Hide “Powered by Kajabi” (CSS-only attempt) */
-.powered,
-.powered-by,
-.powered-by-kajabi,
-.kajabi,
-.footer .powered,
-.footer .powered-by,
-.site-footer .powered,
-.site-footer .powered-by,
-a[href*="kajabi"] {
-  display: none !important;
-}
-
 /* =========
-   Mobile tuning (phone is priority)
+   Mobile (phone priority)
 ========= */
 @media (max-width: 780px) {
   .hero {
@@ -267,67 +199,32 @@ a[href*="kajabi"] {
     max-height: 520px;
   }
 
-  .site-title,
-  .header-title,
-  .top-title {
+  .site-title {
     top: 22px;
     font-size: 18px;
   }
 
-  .card,
-  .content-card,
-  .text-card {
+  .card {
+    max-width: 560px;
     margin: -78px auto 18px;
     padding: 34px 26px;
-    max-width: 540px;
   }
 
-  .card-grid,
-  .card-inner,
-  .content-grid {
+  .card-grid {
     grid-template-columns: 1fr;
     gap: 18px;
   }
 
-  .kicker,
-  .hey,
-  .small-hello {
-    font-size: 20px;
-    margin-bottom: 12px;
+  /* Make I'M NEIL smaller on phone */
+  .headline {
+    font-size: 40px;
   }
 
-  .h1,
-  .headline,
-  .big-name,
-  .card h1,
-  .card .headline {
-    /* reduce “I’M NEIL.” on phone */
-    font-size: 46px;
-  }
+  .kicker { font-size: 20px; }
 
-  .lead,
-  .first-bold,
-  .bold-line {
-    font-size: 18px; /* same as body */
-  }
+  .lead, .body { font-size: 18px; }
 
-  .body,
-  .copy,
-  .card p,
-  .card .copy p {
-    font-size: 18px;
-    line-height: 1.8;
-  }
-
-  .video-section,
-  .video-wrap,
   .featured {
     max-width: 560px;
   }
 }
-
-/* =========
-   Safety: ensure text box is ALWAYS above loop
-========= */
-.card, .content-card, .text-card, .main { z-index: 3; }
-.hero { z-index: 0; }
