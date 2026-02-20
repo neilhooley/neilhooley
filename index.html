@@ -2,14 +2,17 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Neil Hooley</title>
 
+    <!-- Fonts (Kajabi-like pairing: clean sans + elegant serif) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Clean, Kajabi-like sans -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -17,80 +20,88 @@
   </head>
 
   <body>
-    <!-- HERO (top half only) -->
-    <header class="hero">
-      <video
-        class="hero__video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-        aria-hidden="true"
-      >
-        <source
-          src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4"
-          type="video/mp4"
-        />
-      </video>
-      <div class="hero__overlay" aria-hidden="true"></div>
-
-      <div class="hero__top">
-        <div class="brand">NEIL HOOLEY</div>
+    <!-- TOP: Hero video (half page) -->
+    <header class="hero" aria-label="Hero">
+      <div class="hero__videoWrap" aria-hidden="true">
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >
+          <source
+            src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <div class="hero__overlay" aria-hidden="true"></div>
       </div>
-    </header>
 
-    <!-- SOLID BOTTOM BACKGROUND + CONTENT -->
-    <main class="page">
-      <!-- Text card: centered, slight overlap into hero -->
-      <section class="card" aria-label="Intro">
+      <div class="hero__topTitle">NEIL HOOLEY</div>
+
+      <!-- White text card that slightly hangs into the video -->
+      <section class="card" aria-label="Intro card">
         <div class="card__grid">
           <div class="card__left">
-            <div class="kicker">Hey there!</div>
-            <h1 class="headline">I’M NEIL.</h1>
+            <div class="card__kicker">Hey there!</div>
+            <h1 class="card__headline">I’M NEIL.</h1>
           </div>
 
           <div class="card__right">
-            <div class="subhead">
+            <h2 class="card__subhead">
               I’ve always believed stories shape us, and the right story can change
               everything.
-            </div>
+            </h2>
 
-            <p class="para">
+            <p class="card__p">
               As an entrepreneur, storyteller, and follower of Jesus, I use real
               conversations, lived experience, and a deep love for storytelling to
-              help others see their lives through the lens of redemption and purpose.
+              help others see their lives through the lens of redemption and
+              purpose.
             </p>
 
-            <p class="para">
+            <p class="card__p">
               Through stories of faith, failure, and transformation, my work invites
-              people to slow down, listen closely, and discover the beauty of what God
-              is writing in their own story.
+              people to slow down, listen closely, and discover the beauty of what
+              God is writing in their own story.
             </p>
           </div>
         </div>
       </section>
+    </header>
 
-      <!-- Featured video (NO text above it) -->
-      <section class="featured" aria-label="Featured Video">
-        <div class="featured__wrap">
-          <video
-            class="featured__video"
-            controls
-            playsinline
-            preload="metadata"
-            poster="./assets/featured-poster.jpg"
-          >
-            <source
-              src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4"
-              type="video/mp4"
-            />
-          </video>
-        </div>
-      </section>
+    <!-- BOTTOM: Solid background section -->
+    <main class="bottom">
+      <div class="bottom__inner">
+        <section class="featured" aria-label="Featured video">
+          <div class="featured__frame">
+            <video
+              id="featuredVideo"
+              class="featured__video"
+              playsinline
+              preload="metadata"
+              poster="./assets/featured-poster.jpg"
+            >
+              <source
+                src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4"
+                type="video/mp4"
+              />
+            </video>
 
-      <!-- Social icons below video, above copyright -->
-      <footer class="footer">
+            <!-- custom play overlay (NO words, just button) -->
+            <button
+              id="featuredPlay"
+              class="featured__play"
+              type="button"
+              aria-label="Play video"
+            >
+              <span class="featured__playIcon" aria-hidden="true"></span>
+            </button>
+          </div>
+        </section>
+
         <nav class="social" aria-label="Social links">
           <a
             class="social__link"
@@ -103,7 +114,7 @@
             <!-- Facebook icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
-                d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H16.7V4.8c-.3 0-1.4-.1-2.7-.1-2.7 0-4.6 1.6-4.6 4.6V11H6.7v3h2.7v8h4.1Z"
+                d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.5-1.5H16.8V5c-.3 0-1.5-.1-2.8-.1-2.8 0-4.7 1.7-4.7 4.8V11H6.8v3h2.5v8h4.2z"
               />
             </svg>
           </a>
@@ -119,8 +130,12 @@
             <!-- Instagram icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
-                d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4A5.8 5.8 0 0 1 16.2 22H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4A3.8 3.8 0 0 0 20 16.2V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 4.3a3.7 3.7 0 1 1 0 7.4 3.7 3.7 0 0 1 0-7.4Zm0 2a1.7 1.7 0 1 0 0 3.4 1.7 1.7 0 0 0 0-3.4ZM17.7 6.8a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8Z"
+                d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9z"
               />
+              <path
+                d="M12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"
+              />
+              <path d="M17.6 6.4a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
             </svg>
           </a>
 
@@ -135,14 +150,52 @@
             <!-- YouTube icon -->
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
-                d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31.6 31.6 0 0 0 2 12a31.6 31.6 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 22 12a31.6 31.6 0 0 0-.4-4.8ZM10.3 15.2V8.8L15.8 12l-5.5 3.2Z"
+                d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.7 4.6 12 4.6 12 4.6s-5.7 0-7.5.5A3 3 0 0 0 2.4 7.2 31.6 31.6 0 0 0 2 12s.1 3.1.4 4.8a3 3 0 0 0 2.1 2.1c1.8.5 7.5.5 7.5.5s5.7 0 7.5-.5a3 3 0 0 0 2.1-2.1c.3-1.7.4-4.8.4-4.8s-.1-3.1-.4-4.8z"
               />
+              <path d="M10 15.3V8.7L16 12l-6 3.3z" fill="currentColor" />
             </svg>
           </a>
         </nav>
 
-        <div class="copyright">© 2026 Kingdom Media</div>
-      </footer>
+        <footer class="footer" aria-label="Footer">
+          <div class="footer__copy">© 2026 Kingdom Media</div>
+          <div class="footer__sub">Powered by Kajabi</div>
+        </footer>
+      </div>
     </main>
+
+    <script>
+      (function () {
+        const v = document.getElementById("featuredVideo");
+        const b = document.getElementById("featuredPlay");
+
+        function playInline() {
+          if (!v) return;
+          v.controls = true;
+          v.play();
+          b.setAttribute("data-hidden", "true");
+        }
+
+        function showOverlay() {
+          b.removeAttribute("data-hidden");
+          v.controls = false;
+        }
+
+        b?.addEventListener("click", playInline);
+        v?.addEventListener("click", () => {
+          // If paused, clicking video plays; if playing, keep controls
+          if (v.paused) playInline();
+        });
+
+        v?.addEventListener("pause", () => {
+          // Show overlay again when paused (keeps it clean like Kajabi)
+          showOverlay();
+        });
+
+        v?.addEventListener("ended", () => {
+          showOverlay();
+        });
+      })();
+    </script>
   </body>
 </html>
