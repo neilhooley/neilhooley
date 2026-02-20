@@ -1,268 +1,268 @@
-/* -------- Base -------- */
-:root{
-  --bg: #f6f1e8;
-  --text: #3f3f3f;
-  --muted: #6b6b6b;
-  --title: #000000;
-  --card: #ffffff;
-  --shadow: 0 12px 40px rgba(0,0,0,.08);
-  --radius: 14px;
-}
-
-*{ box-sizing: border-box; }
-html, body{ height: 100%; }
+/* Base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 body{
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
-  color: var(--text);
+  margin:0;
+  background:#f6f2ea;
+  color:#6f6a64;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* -------- HERO / Loop -------- */
+/* HERO */
 .hero{
   position: relative;
-  width: 100%;
-}
-
-.hero-media{
-  position: relative;
-  height: 48vh;           /* top half-ish */
+  height: 54vh;
   min-height: 360px;
+  max-height: 640px;
   overflow: hidden;
-  background: #000;       /* fallback */
+  background:#f6f2ea;
 }
 
+/* Ensure loop fills and centers on desktop */
 .hero-video{
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;      /* keeps it centered and fills */
-  object-position: center;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position: center center;
+  display:block;
 }
 
+/* Light overlay only */
 .hero-overlay{
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.06); /* very light overlay */
-  pointer-events: none;
+  position:absolute;
+  inset:0;
+  background: rgba(246,242,234,.10);
+  pointer-events:none;
 }
 
-.hero-title{
-  position: absolute;
-  top: 28px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 3;
-  font-weight: 800;
-  letter-spacing: .08em;
-  font-size: 26px;
-  color: var(--title);    /* BLACK like you asked */
-  text-transform: uppercase;
-  text-align: center;
-  width: 100%;
-  pointer-events: none;
+/* Title must be black and centered */
+.site-title{
+  position:absolute;
+  top:26px;
+  left:50%;
+  transform:translateX(-50%);
+  margin:0;
+  z-index:3;
+  color:#111;
+  font-weight:900;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  font-size:20px;
+  white-space:nowrap;
 }
 
-/* The beige solid area under the loop */
-.card-wrap{
+/* CONTENT */
+.content{
   position: relative;
-  z-index: 4; /* above loop */
-  margin-top: -110px; /* slight overlap on loop (like Kajabi) */
-  padding: 0 18px 40px;
+  background:#f6f2ea;
+  padding: 0 18px 44px;
 }
 
-/* White box that overlays the loop */
+/* Card above loop, overlaps hero bottom */
 .card{
-  max-width: 980px;
-  margin: 0 auto;
-  background: var(--card);
-  border-radius: 0;       /* Kajabi looks square */
-  box-shadow: var(--shadow);
-  padding: 52px 56px;
+  position: relative;
+  z-index: 10;
+  max-width: 880px;
+  margin: -90px auto 26px;
+  background: #fff;
+  padding: 44px 46px;
 }
 
+/* Desktop two columns */
 .card-grid{
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  column-gap: 56px;
+  display:grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap:34px;
+  align-items:start;
 }
 
 .kicker{
-  font-size: 18px;
-  color: #5a5a5a;
-  font-weight: 600;
-  margin-bottom: 18px;
+  margin:0 0 12px;
+  font-weight:800;
+  color:#6e6a64;
+  font-size:18px;
 }
 
+/* Smaller I'M NEIL on desktop + phone */
 .headline{
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 44px;     /* smaller than before, closer to Kajabi */
-  letter-spacing: .01em;
-  margin: 0;
-  color: #3a3a3a;
-  font-weight: 700;
+  margin:0;
+  font-weight:900;
+  color:#3f3a35;
+  letter-spacing:.01em;
+  font-size: 38px;   /* reduced */
+  line-height: 1.08;
 }
 
 .lead{
-  font-size: 22px;
-  line-height: 1.35;
-  font-weight: 700;
-  color: #3f3f3f;
-  margin: 0 0 18px 0;
+  margin:0 0 18px;
+  font-weight:900;
+  color:#3f3a35;
+  font-size:18px; /* same size as body */
+  line-height:1.45;
 }
 
-.card-right p{
-  margin: 0 0 18px 0;
-  font-size: 18px;
-  line-height: 1.7;
-  color: #6a6a6a;
+.body{
+  margin:0 0 18px;
+  font-size:18px;
+  line-height:1.8;
+  color:#6f6a64;
 }
 
-/* -------- Page / Featured Video -------- */
-.page{
-  padding: 0 18px 24px;
-}
-
+/* Featured video area (no pop/glitch now that html.ready controls opacity) */
 .featured{
-  max-width: 980px;
-  margin: 0 auto;
-  padding-bottom: 22px;
+  max-width: 920px;
+  margin: 0 auto 14px;
+  opacity: 0;
+  transition: opacity .12s ease;
 }
+html.ready .featured{ opacity:1; }
 
-.video-box{
+/* Featured frame */
+.featured-frame{
   position: relative;
-  border-radius: var(--radius);
+  border-radius: 14px;
   overflow: hidden;
-  background: #d7d0c7;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+  background:#000;
 }
 
+/* Keep the video in-place */
 .featured-video{
-  display: block;
-  width: 100%;
-  height: auto;
-  background: #000;
+  width:100%;
+  height:auto;
+  display:block;
+  aspect-ratio: 16 / 9;
 }
 
-/* remove any weird spacing below videos */
-video{ vertical-align: middle; }
+/* Hide native controls (prevents iPhone fullscreen trigger via native UI) */
+.featured-video::-webkit-media-controls { display:none !important; }
+.featured-video::-webkit-media-controls-enclosure { display:none !important; }
 
-/* Center play overlay */
-.play-overlay{
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
+/* Overlay buttons */
+.vbtn{
+  position:absolute;
+  border:0;
+  background:transparent;
+  padding:0;
+  cursor:pointer;
 }
 
-.play-overlay svg{
-  width: 88px;
-  height: 88px;
+/* Big play button centered */
+.vbtn-play{
+  inset:0;
+  display:grid;
+  place-items:center;
+}
+.play-circle{
+  width:92px;
+  height:92px;
+  border-radius:999px;
+  background: rgba(40,40,40,.35);
+  backdrop-filter: blur(1px);
+  position: relative;
+}
+.play-circle::before{
+  content:"";
+  position:absolute;
+  left: 38px;
+  top: 30px;
+  border-style: solid;
+  border-width: 16px 0 16px 24px;
+  border-color: transparent transparent transparent rgba(255,255,255,.92);
 }
 
-.play-overlay circle{
-  fill: rgba(70,70,70,.45);
-}
+/* Hide play overlay while playing */
+html.playing .vbtn-play{ opacity:0; pointer-events:none; transition: opacity .12s ease; }
 
-.play-overlay path{
-  fill: #ffffff;
-}
-
-/* -------- Social icons -------- */
-.social{
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  padding: 18px 0 10px;
-}
-
-.social-btn{
-  width: 46px;
-  height: 46px;
+/* Expand button bottom-right */
+.vbtn-expand{
+  right: 12px;
+  bottom: 12px;
+  width: 42px;
+  height: 42px;
   border-radius: 999px;
-  display: grid;
-  place-items: center;
-  text-decoration: none;
-  background: rgba(255,255,255,0.55);
+  background: rgba(40,40,40,.28);
+  display:grid;
+  place-items:center;
+}
+.expand-icon{
+  width: 18px;
+  height: 18px;
+  position: relative;
+}
+.expand-icon::before,
+.expand-icon::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border: 2px solid rgba(255,255,255,.85);
+  border-left: 0;
+  border-bottom: 0;
+  transform: rotate(0deg);
 }
 
-.social-btn svg{
-  width: 22px;
-  height: 22px;
-  stroke: #6b6b6b;
-  fill: none;
-  stroke-width: 1.8;
+/* Social icons */
+.social{
+  display:flex;
+  justify-content:center;
+  gap:22px;
+  margin:18px auto 18px;
+  align-items:center;
+}
+.social a{
+  width:46px;
+  height:46px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  background: rgba(0,0,0,.06);
+  transition: transform .15s ease, background .15s ease;
+}
+.social a:hover{
+  transform: translateY(-1px);
+  background: rgba(0,0,0,.10);
+}
+.social svg{
+  width:20px;
+  height:20px;
+  fill:#6b655f;
 }
 
-.social-btn svg path{
-  stroke: #6b6b6b;
-}
-
-.social-btn:hover{
-  background: rgba(255,255,255,0.75);
-}
-
+/* Footer */
 .footer{
-  text-align: center;
-  color: #6b6b6b;
-  font-size: 16px;
-  padding: 12px 0 0;
+  text-align:center;
+  padding: 8px 0 18px;
+  color:#7b746e;
+}
+.copyright{
+  margin:0;
+  font-size:16px;
+  font-weight:600;
 }
 
-/* -------- Responsive (Phone first priority) -------- */
-@media (max-width: 760px){
-  .hero-media{
+/* Mobile */
+@media (max-width: 780px){
+  .hero{
     height: 52vh;
-    min-height: 420px;
+    min-height: 320px;
+    max-height: 520px;
   }
-
-  .hero-title{
-    font-size: 28px;
-    top: 34px;
+  .site-title{
+    top:22px;
+    font-size:18px;
   }
-
-  .card-wrap{
-    margin-top: -120px;
-    padding: 0 16px 34px;
-  }
-
   .card{
-    padding: 34px 24px;
+    max-width: 560px;
+    margin: -78px auto 18px;
+    padding: 34px 26px;
   }
-
   .card-grid{
     grid-template-columns: 1fr;
-    row-gap: 16px;
+    gap:18px;
   }
-
-  .headline{
-    font-size: 44px; /* closer to your reference */
-  }
-
-  .lead{
-    font-size: 26px;
-    margin-top: 8px;
-  }
-
-  .card-right p{
-    font-size: 20px;
-    line-height: 1.75;
-  }
-
-  .play-overlay svg{
-    width: 92px;
-    height: 92px;
-  }
-}
-
-/* Desktop centering guard (fixes “pushed left”) */
-@media (min-width: 761px){
-  .hero-media{
-    width: 100%;
-  }
+  .headline{ font-size: 34px; } /* smaller on phone */
+  .kicker{ font-size: 20px; }
+  .lead, .body{ font-size:18px; }
 }
