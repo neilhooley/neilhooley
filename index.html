@@ -1,168 +1,99 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Neil Hooley</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Neil Hooley</title>
 
-  <!-- CRITICAL CSS to prevent initial “video flash” before style.css loads -->
-  <style>
-    .hero{position:relative;height:54vh;min-height:360px;max-height:640px;overflow:hidden;background:#f6f2ea}
-    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-    .hero-overlay{position:absolute;inset:0;background:rgba(246,242,234,.10);pointer-events:none}
-    .site-title{position:absolute;top:26px;left:50%;transform:translateX(-50%);margin:0;z-index:3;color:#111;font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:20px;white-space:nowrap}
-    .content{position:relative;background:#f6f2ea;padding:0 18px 40px;z-index:5}
-    .card{position:relative;z-index:10;max-width:880px;margin:-90px auto 26px;background:#fff;padding:44px 46px}
-    /* Hide featured area until CSS + JS are ready (prevents pop/glitch) */
-    .featured{opacity:0}
-    html.ready .featured{opacity:1}
-  </style>
+<style>
+.hero{position:relative;height:54vh;min-height:360px;max-height:640px;overflow:hidden;background:#f6f2ea}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(246,242,234,.10)}
+.site-title{position:absolute;top:26px;left:50%;transform:translateX(-50%);margin:0;color:#111;font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:20px;z-index:3}
+</style>
 
-  <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
-  <main class="page">
-    <!-- HERO -->
-    <section class="hero" aria-label="Hero background">
-      <h1 class="site-title">NEIL HOOLEY</h1>
+<main class="page">
 
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="auto"
-        aria-hidden="true"
-      >
-        <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
-      </video>
+<section class="hero">
+<h1 class="site-title">NEIL HOOLEY</h1>
 
-      <div class="hero-overlay" aria-hidden="true"></div>
-    </section>
+<video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto">
+<source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4"/>
+</video>
 
-    <!-- CONTENT -->
-    <section class="content">
-      <div class="card" aria-label="Intro">
-        <div class="card-grid">
-          <div class="left">
-            <p class="kicker">Hey there!</p>
-            <p class="headline">I’M NEIL.</p>
-          </div>
+<div class="hero-overlay"></div>
+</section>
 
-          <div class="right">
-            <p class="lead">I’ve always believed stories shape us, and the right story can change everything.</p>
+<section class="content">
 
-            <p class="body">
-              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience, and a
-              deep love for storytelling to help others see their lives through the lens of redemption and purpose.
-            </p>
+<div class="card">
+<div class="card-grid">
+<div class="left">
+<p class="kicker">Hey there!</p>
+<p class="headline">I’M NEIL.</p>
+</div>
 
-            <p class="body">
-              Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely,
-              and discover the beauty of what God is writing in their own story.
-            </p>
-          </div>
-        </div>
-      </div>
+<div class="right">
+<p class="lead">I’ve always believed stories shape us, and the right story can change everything.</p>
 
-      <!-- FEATURED VIDEO (custom play + expand, plays in same box) -->
-      <div class="featured" aria-label="Featured video">
-        <div class="featured-frame">
-          <video
-            id="featuredVideo"
-            class="featured-video"
-            playsinline
-            webkit-playsinline
-            preload="metadata"
-            poster="assets/featured-poster.jpg"
-          >
-            <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
-          </video>
+<p class="body">As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience, and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.</p>
 
-          <!-- Overlay controls: play + expand (no text) -->
-          <button id="playBtn" class="vbtn vbtn-play" type="button" aria-label="Play video">
-            <span class="play-circle" aria-hidden="true"></span>
-          </button>
+<p class="body">Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely, and discover the beauty of what God is writing in their own story.</p>
+</div>
+</div>
+</div>
 
-          <button id="expandBtn" class="vbtn vbtn-expand" type="button" aria-label="Open fullscreen">
-            <span class="expand-icon" aria-hidden="true"></span>
-          </button>
-        </div>
-      </div>
+<!-- FEATURED VIDEO -->
+<div class="featured">
+<div class="featured-frame">
 
-      <!-- SOCIAL ICONS -->
-      <nav class="social" aria-label="Social links">
-        <a href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4v1.7H16l-.5 2.9h-2v7A10 10 0 0 0 22 12z"/>
-          </svg>
-        </a>
+<video id="featuredVideo" class="featured-video" playsinline webkit-playsinline preload="metadata" poster="assets/featured-poster.jpg">
+<source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4"/>
+</video>
 
-        <a href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5zM18.2 6.8a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
-          </svg>
-        </a>
+<button id="playBtn" class="play-btn" aria-label="Play Video"></button>
 
-        <a href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank" rel="noopener" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
-          </svg>
-        </a>
-      </nav>
+</div>
+</div>
 
-      <footer class="footer" aria-label="Footer">
-        <p class="copyright">© 2026 Kingdom Media</p>
-      </footer>
-    </section>
-  </main>
+<nav class="social">
+<a href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4v1.7H16l-.5 2.9h-2v7A10 10 0 0 0 22 12z"/></svg>
+</a>
 
-  <script>
-    // Mark page ready AFTER CSS parsed + first paint; prevents featured “pop” into hero
-    window.addEventListener("load", () => {
-      document.documentElement.classList.add("ready");
-    });
+<a href="https://www.instagram.com/neilhooley" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3z"/></svg>
+</a>
 
-    (function () {
-      const v = document.getElementById("featuredVideo");
-      const playBtn = document.getElementById("playBtn");
-      const expandBtn = document.getElementById("expandBtn");
+<a href="https://youtube.com/@neil.hooley" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12z"/></svg>
+</a>
+</nav>
 
-      // Keep native fullscreen behavior off by using a custom play button.
-      // playsinline + webkit-playsinline helps iPhone stay inline.
-      function togglePlay() {
-        if (!v) return;
-        if (v.paused) {
-          v.play().catch(() => {});
-          document.documentElement.classList.add("playing");
-        } else {
-          v.pause();
-          document.documentElement.classList.remove("playing");
-        }
-      }
+<footer class="footer">
+<p>© 2026 Kingdom Media</p>
+</footer>
 
-      function goFullscreen() {
-        if (!v) return;
-        // Desktop fullscreen if available
-        const el = v.parentElement;
-        if (el?.requestFullscreen) el.requestFullscreen().catch(() => {});
-        // iOS Safari doesn’t support requestFullscreen reliably; user can use the native expand icon if they want.
-      }
+</section>
+</main>
 
-      playBtn?.addEventListener("click", togglePlay);
-      v?.addEventListener("click", togglePlay);
+<script>
+const v=document.getElementById("featuredVideo");
+const btn=document.getElementById("playBtn");
 
-      v?.addEventListener("pause", () => document.documentElement.classList.remove("playing"));
-      v?.addEventListener("ended", () => document.documentElement.classList.remove("playing"));
+btn.onclick=()=>{
+v.setAttribute("controls","controls");
+v.play();
+btn.style.display="none";
+};
 
-      expandBtn?.addEventListener("click", (e) => {
-        e.stopPropagation();
-        goFullscreen();
-      });
-    })();
-  </script>
+v.onpause=()=>{btn.style.display="grid"};
+v.onended=()=>{btn.style.display="grid"};
+</script>
+
 </body>
 </html>
