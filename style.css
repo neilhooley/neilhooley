@@ -1,19 +1,23 @@
 :root {
+  /* Kajabi-ish warm background */
   --cream: #f6f1e7;
   --ink: #111111;
   --text: #4a4a4a;
   --muted: #6b6b6b;
   --card: #ffffff;
 
+  /* Layout */
   --card-max: 980px;
   --card-pad: 56px;
   --card-radius: 0px;
 
   --video-radius: 12px;
 
+  /* Hero height: top half */
   --hero-h: 54vh;
   --hero-h-mobile: 52vh;
 
+  /* Card overlap into hero video */
   --card-overlap: 110px;
   --card-overlap-mobile: 90px;
 }
@@ -29,7 +33,7 @@ body {
   font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* HERO */
+/* -------------------- HERO (TOP HALF) --------------------- */
 .hero {
   position: relative;
   min-height: calc(var(--hero-h) + var(--card-overlap));
@@ -56,6 +60,7 @@ body {
   display: block;
 }
 
+/* very light overlay (do NOT wash out) */
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -74,7 +79,7 @@ body {
   margin-top: 12px;
 }
 
-/* CARD */
+/* White text card */
 .card {
   position: relative;
   z-index: 2;
@@ -101,13 +106,14 @@ body {
   margin-bottom: 18px;
 }
 
+/* 1) Headline smaller (half size) */
 .card__headline {
   font-family: "Playfair Display", Georgia, serif;
   margin: 0;
-  font-size: 56px;
+  font-size: 28px; /* was 56px */
   letter-spacing: 0.02em;
   color: #2a2a2a;
-  line-height: 1;
+  line-height: 1.05;
 }
 
 .card__subhead {
@@ -125,7 +131,7 @@ body {
   color: #595959;
 }
 
-/* BOTTOM */
+/* -------------------- BOTTOM SOLID SECTION --------------------- */
 .bottom {
   background: var(--cream);
   padding: 44px 0 56px;
@@ -136,7 +142,7 @@ body {
   margin: 0 auto;
 }
 
-/* FEATURED VIDEO */
+/* Featured video block */
 .featured { margin-top: 18px; }
 
 .featured__frame {
@@ -147,6 +153,7 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
+/* Keep a cinematic ratio similar to Kajabi */
 .featured__frame::before {
   content: "";
   display: block;
@@ -162,7 +169,7 @@ body {
   display: block;
 }
 
-/* PLAY OVERLAY */
+/* Custom play overlay (NO text) */
 .featured__play {
   position: absolute;
   inset: 0;
@@ -194,11 +201,11 @@ body {
   border-color: transparent transparent transparent rgba(255, 255, 255, 0.92);
 }
 
-/* SOCIAL */
+/* 2) Social icons cleaner (Kajabi-ish) */
 .social {
   display: flex;
   justify-content: center;
-  gap: 18px;
+  gap: 14px;
   margin: 22px 0 10px;
 }
 
@@ -208,35 +215,37 @@ body {
   display: grid;
   place-items: center;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.06);
+  background: rgba(0, 0, 0, 0.04);
+  color: #4b4b4b; /* controls SVG fill via currentColor */
   transition: transform 120ms ease, background 120ms ease;
   text-decoration: none;
 }
 
 .social__link:hover {
   transform: translateY(-1px);
-  background: rgba(0, 0, 0, 0.09);
+  background: rgba(0, 0, 0, 0.07);
 }
 
 .social__link svg {
-  width: 20px;
-  height: 20px;
-  fill: #4b4b4b;
+  width: 18px;
+  height: 18px;
+  fill: currentColor; /* makes ALL icons consistent */
 }
 
-/* FOOTER */
-.footer { text-align: center; margin-top: 14px; }
+/* Footer */
+.footer {
+  text-align: center;
+  margin-top: 14px;
+}
 
-.footer__copy { font-weight: 600; color: #6a6a6a; }
+.footer__copy {
+  font-weight: 600;
+  color: #6a6a6a;
+}
 
-.footer__sub { margin-top: 10px; color: #9a9a9a; }
-
-/* MOBILE */
+/* -------------------- MOBILE TUNING --------------------- */
 @media (max-width: 820px) {
-  :root {
-    --hero-h: var(--hero-h-mobile);
-    --card-pad: 26px;
-  }
+  :root { --hero-h: var(--hero-h-mobile); --card-pad: 26px; }
 
   .hero {
     min-height: calc(var(--hero-h) + var(--card-overlap-mobile));
@@ -257,7 +266,8 @@ body {
 
   .card__grid { grid-template-columns: 1fr; gap: 18px; }
 
-  .card__headline { font-size: 52px; }
+  /* Headline still smaller on mobile */
+  .card__headline { font-size: 26px; }
 
   .card__subhead { font-size: 22px; }
 
@@ -274,7 +284,7 @@ body {
   }
 }
 
-/* iOS Safari rendering nudge */
+/* iOS Safari: avoid weird overlays */
 video {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
