@@ -1,46 +1,35 @@
 :root {
-  /* Kajabi-ish warm background */
   --cream: #f6f1e7;
   --ink: #111111;
   --text: #4a4a4a;
   --muted: #6b6b6b;
   --card: #ffffff;
 
-  /* Layout */
   --card-max: 980px;
   --card-pad: 56px;
-  --card-radius: 0px; /* Kajabi page feels square/clean */
+  --card-radius: 0px;
+
   --video-radius: 12px;
 
-  /* Hero height: top half */
   --hero-h: 54vh;
   --hero-h-mobile: 52vh;
 
-  /* Card overlap into hero video */
   --card-overlap: 110px;
   --card-overlap-mobile: 90px;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html,
-body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   margin: 0;
   background: var(--cream);
   color: var(--text);
-  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial,
-    sans-serif;
+  font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* --------------------
-   HERO (TOP HALF)
---------------------- */
+/* HERO */
 .hero {
   position: relative;
   min-height: calc(var(--hero-h) + var(--card-overlap));
@@ -67,7 +56,6 @@ body {
   display: block;
 }
 
-/* very light overlay (do NOT wash out) */
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -86,7 +74,7 @@ body {
   margin-top: 12px;
 }
 
-/* White card */
+/* CARD */
 .card {
   position: relative;
   z-index: 2;
@@ -119,7 +107,7 @@ body {
   font-size: 56px;
   letter-spacing: 0.02em;
   color: #2a2a2a;
-  line-height: 1.0;
+  line-height: 1;
 }
 
 .card__subhead {
@@ -137,9 +125,7 @@ body {
   color: #595959;
 }
 
-/* --------------------
-   BOTTOM SOLID SECTION
---------------------- */
+/* BOTTOM */
 .bottom {
   background: var(--cream);
   padding: 44px 0 56px;
@@ -150,10 +136,8 @@ body {
   margin: 0 auto;
 }
 
-/* Featured video block */
-.featured {
-  margin-top: 18px;
-}
+/* FEATURED VIDEO */
+.featured { margin-top: 18px; }
 
 .featured__frame {
   position: relative;
@@ -163,11 +147,10 @@ body {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
 }
 
-/* Keep a cinematic ratio similar to Kajabi */
 .featured__frame::before {
   content: "";
   display: block;
-  padding-top: 56.25%; /* 16:9 */
+  padding-top: 56.25%;
 }
 
 .featured__video {
@@ -179,7 +162,7 @@ body {
   display: block;
 }
 
-/* Custom play overlay (NO text) */
+/* PLAY OVERLAY */
 .featured__play {
   position: absolute;
   inset: 0;
@@ -190,9 +173,7 @@ body {
   cursor: pointer;
 }
 
-.featured__play[data-hidden="true"] {
-  display: none;
-}
+.featured__play[data-hidden="true"] { display: none; }
 
 .featured__playIcon {
   width: 78px;
@@ -213,7 +194,7 @@ body {
   border-color: transparent transparent transparent rgba(255, 255, 255, 0.92);
 }
 
-/* Social icons (below video) */
+/* SOCIAL */
 .social {
   display: flex;
   justify-content: center;
@@ -243,25 +224,14 @@ body {
   fill: #4b4b4b;
 }
 
-/* Footer */
-.footer {
-  text-align: center;
-  margin-top: 14px;
-}
+/* FOOTER */
+.footer { text-align: center; margin-top: 14px; }
 
-.footer__copy {
-  font-weight: 600;
-  color: #6a6a6a;
-}
+.footer__copy { font-weight: 600; color: #6a6a6a; }
 
-.footer__sub {
-  margin-top: 10px;
-  color: #9a9a9a;
-}
+.footer__sub { margin-top: 10px; color: #9a9a9a; }
 
-/* --------------------
-   MOBILE TUNING
---------------------- */
+/* MOBILE */
 @media (max-width: 820px) {
   :root {
     --hero-h: var(--hero-h-mobile);
@@ -285,32 +255,17 @@ body {
     margin-top: calc(var(--hero-h) - var(--card-overlap-mobile));
   }
 
-  .card__grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
+  .card__grid { grid-template-columns: 1fr; gap: 18px; }
 
-  .card__headline {
-    font-size: 52px;
-  }
+  .card__headline { font-size: 52px; }
 
-  .card__subhead {
-    font-size: 22px;
-  }
+  .card__subhead { font-size: 22px; }
 
-  .card__p {
-    font-size: 18px;
-    line-height: 1.9;
-  }
+  .card__p { font-size: 18px; line-height: 1.9; }
 
-  .bottom__inner {
-    width: calc(100% - 28px);
-  }
+  .bottom__inner { width: calc(100% - 28px); }
 
-  .featured__playIcon {
-    width: 84px;
-    height: 84px;
-  }
+  .featured__playIcon { width: 84px; height: 84px; }
 
   .featured__playIcon::before {
     left: 33px;
@@ -319,7 +274,7 @@ body {
   }
 }
 
-/* iOS Safari: avoid weird overlays */
+/* iOS Safari rendering nudge */
 video {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
