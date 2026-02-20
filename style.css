@@ -1,283 +1,333 @@
-:root {
-  --bg: #f7f2e8;
-  --card: #ffffff;
-  --text: #2b2b2b;
-  --muted: #6c6c6c;
-
-  /* Kajabi-ish icon gray */
-  --icon: rgba(0, 0, 0, 0.45);
-
-  --shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
-}
-
+/* =========
+   Reset
+========= */
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   margin: 0;
-  color: var(--text);
-  background: var(--bg);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  color: #4f4a44;
+  background: #f6f2ea; /* Kajabi-like warm off-white */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* HERO */
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* =========
+   Layout
+========= */
+.page {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+/* Top hero (video loop) should be top half-ish */
 .hero {
   position: relative;
-  height: 52vh;              /* top half feel */
+  height: 54vh;                 /* top half feel */
   min-height: 360px;
+  max-height: 620px;
+  background: #f6f2ea;          /* fallback while video loads */
   overflow: hidden;
-  background: #111;
 }
 
-.hero__video {
+/* Loop video layer */
+.hero video,
+.hero .hero-video,
+.hero .hero-loop {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;            /* DO NOT zoom manually */
   object-position: center;
+  z-index: 0;
+}
+
+/* Very light overlay so video is visible but soft */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(246, 242, 234, 0.10); /* very light */
   z-index: 1;
+  pointer-events:none;
 }
 
-.hero__tint {
+/* Title over the loop */
+.site-title,
+.header-title,
+.top-title {
   position: absolute;
-  inset: 0;
-  /* light overlay so loop is visible but text readable */
-  background: rgba(0, 0, 0, 0.18);
+  top: 28px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
-}
-
-/* Force name to the TOP over the loop */
-.hero__top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  display: flex;
-  justify-content: center;
-  padding-top: 26px;
-  pointer-events: none;
-}
-
-.hero__name {
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  font-size: 13px;
-  color: rgba(255,255,255,0.88);
-  text-transform: uppercase;
-  text-shadow: 0 1px 14px rgba(0,0,0,0.35);
-}
-
-/* PAGE */
-.page {
-  background: var(--bg);
-  padding: 0 18px 70px;
-}
-
-/* CARD */
-.card {
-  position: relative;
-  z-index: 10;               /* ALWAYS above hero video */
-  max-width: 980px;
-  margin: -120px auto 0;     /* overlap hero */
-  background: var(--card);
-  box-shadow: var(--shadow);
-  border-radius: 2px;
-  padding: 34px;
-}
-
-.card__grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 18px;
-}
-
-.kicker {
-  font-weight: 700;
-  color: #4a4a4a;
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.headline {
   margin: 0;
-  font-family: "Playfair Display", serif;
+  letter-spacing: 0.14em;
   font-weight: 800;
-
-  /* FIX: stop being huge on desktop */
-  font-size: clamp(42px, 5vw, 56px);
-
-  letter-spacing: 0.02em;
-  color: #2b2b2b;
+  font-size: 20px;
+  color: #111111; /* MUST be black */
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.lead {
-  font-size: 22px;
-  line-height: 1.25;
-  font-weight: 750;
-  color: #3a3a3a;
-  margin: 2px 0 14px;
+/* Main content area under hero */
+.main {
+  position: relative;
+  background: #f6f2ea;
+  padding: 0 18px 44px;
 }
 
-.body {
+/* White box that slightly overlaps the bottom of the loop */
+.card,
+.content-card,
+.text-card {
+  position: relative;
+  z-index: 3;                   /* ABOVE video loop */
+  max-width: 860px;             /* desktop box width */
+  margin: -92px auto 28px;      /* pulls up into the loop */
+  background: #ffffff;
+  padding: 42px 44px;
+  box-shadow: none;
+}
+
+/* Two-column layout on desktop like Kajabi */
+.card-grid,
+.card-inner,
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: 34px;
+  align-items: start;
+}
+
+/* Typography (match Kajabi feel) */
+.kicker,
+.hey,
+.small-hello {
+  margin: 0 0 10px;
+  font-weight: 700;
+  color: #6d6862;
+  font-size: 18px;
+}
+
+.h1,
+.headline,
+.big-name,
+.card h1,
+.card .headline {
+  margin: 0 0 14px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  color: #3e3a35;
+  /* Smaller than before; still prominent */
+  font-size: clamp(34px, 4vw, 48px);
+  line-height: 1.02;
+}
+
+/* Bold sentence should be SAME size as body, just bold */
+.lead,
+.first-bold,
+.bold-line {
+  margin: 10px 0 18px;
+  font-weight: 800;
+  color: #3f3a35;
+  font-size: 18px;  /* same as body below */
+  line-height: 1.35;
+}
+
+/* Body */
+.body,
+.copy,
+.card p,
+.card .copy p {
+  margin: 0 0 18px;
   font-size: 18px;
   line-height: 1.75;
-  color: var(--muted);
-  margin: 0 0 14px;
+  color: #706b65;
 }
 
-/* FEATURED VIDEO */
-.featured {
-  max-width: 980px;
-  margin: 42px auto 0;
+/* =========
+   Featured Video Block
+========= */
+.featured,
+.video-section,
+.video-wrap {
+  max-width: 920px;
+  margin: 0 auto 18px;
+  padding: 0 0 0;
 }
 
-.featured__wrap {
-  display: flex;
-  justify-content: center;
-}
-
-.featured__frame {
+.video-frame,
+.video-box,
+.video-embed {
   position: relative;
-  width: min(920px, 100%);
   border-radius: 14px;
   overflow: hidden;
   background: #ddd;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
 }
 
-.featured__video {
-  display: block;
+/* If you use <video> for the featured video */
+.video-frame video,
+.video-box video,
+.video-embed video {
   width: 100%;
   height: auto;
-  aspect-ratio: 16 / 9;
-  background: #000;
+  display: block;
 }
 
-/* Hide controls until playing */
-.featured__video::-webkit-media-controls {
-  opacity: 0;
-  transition: opacity 180ms ease;
-}
-html.is-playing .featured__video::-webkit-media-controls {
-  opacity: 1;
-}
-
-/* Custom play button overlay (no text) */
-.play {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  border: 0;
-  background: transparent;
-  cursor: pointer;
-}
-
-.play__circle {
-  width: 92px;
-  height: 92px;
-  border-radius: 999px;
-  background: rgba(40, 40, 40, 0.35);
-  backdrop-filter: blur(1px);
-  display: grid;
-  place-items: center;
-}
-
-.play__icon {
-  width: 40px;
-  height: 40px;
-  fill: rgba(255, 255, 255, 0.92);
-  transform: translateX(2px);
-}
-
-html.is-playing .play {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 180ms ease;
-}
-
-/* SOCIAL ICONS */
-.social {
+/* =========
+   Social Icons (icons only)
+========= */
+.social,
+.social-icons {
   display: flex;
   justify-content: center;
   gap: 22px;
-  padding: 22px 0 10px;
+  margin: 18px auto 18px;
+  align-items: center;
 }
 
-.social__link {
-  width: 46px;
-  height: 46px;
+/* icon links */
+.social a,
+.social-icons a {
+  width: 40px;
+  height: 40px;
   border-radius: 999px;
   display: grid;
   place-items: center;
-  text-decoration: none;
-  background: transparent;
+  background: rgba(0,0,0,0.06);
+  transition: transform .15s ease, background .15s ease;
 }
 
-.social__icon {
-  width: 22px;
-  height: 22px;
-  fill: var(--icon);         /* FIX: correct Kajabi-ish gray */
+.social a:hover,
+.social-icons a:hover {
+  transform: translateY(-1px);
+  background: rgba(0,0,0,0.10);
 }
 
-/* FOOTER */
-.footer {
+/* SVG icons */
+.social a svg,
+.social-icons a svg {
+  width: 18px;
+  height: 18px;
+  fill: #5f5a54;
+}
+
+/* Font-icon fallback (if using <i>) */
+.social a i,
+.social-icons a i {
+  font-size: 18px;
+  color: #5f5a54;
+}
+
+/* =========
+   Footer
+========= */
+.footer,
+.site-footer {
   text-align: center;
-  padding-top: 10px;
+  padding: 10px 18px 34px;
+  color: #7b746e;
 }
 
-.footer__copy {
-  color: #6b6b6b;
+/* keep only © 2026 Kingdom Media */
+.footer .copyright,
+.site-footer .copyright {
+  margin: 0;
+  font-size: 16px;
   font-weight: 600;
-  margin-top: 6px;
 }
 
-.footer__sub {
-  color: #a2a2a2;
-  margin-top: 6px;
-  font-weight: 500;
+/* Hide “Powered by Kajabi” (CSS-only attempt) */
+.powered,
+.powered-by,
+.powered-by-kajabi,
+.kajabi,
+.footer .powered,
+.footer .powered-by,
+.site-footer .powered,
+.site-footer .powered-by,
+a[href*="kajabi"] {
+  display: none !important;
 }
 
-/* Desktop layout (keep it NORMAL sized) */
-@media (min-width: 860px) {
-  .card {
-    padding: 44px 52px;
-    margin-top: -140px;
+/* =========
+   Mobile tuning (phone is priority)
+========= */
+@media (max-width: 780px) {
+  .hero {
+    height: 52vh;
+    min-height: 320px;
+    max-height: 520px;
   }
 
-  .card__grid {
-    grid-template-columns: 260px 1fr;
-    gap: 34px;
-    align-items: start;
+  .site-title,
+  .header-title,
+  .top-title {
+    top: 22px;
+    font-size: 18px;
   }
 
-  /* FIX: keep desktop text sane */
-  .kicker { font-size: 18px; }
-  .lead { font-size: 22px; }
-  .body { font-size: 18px; }
-
-  /* keep header modest */
-  .hero__name { font-size: 13px; }
-}
-
-/* iPhone tuning */
-@media (max-width: 520px) {
-  .hero { height: 54vh; min-height: 380px; }
-  .hero__top { padding-top: 22px; }
-  .hero__name { font-size: 13px; }
-
-  .card {
-    margin-top: -110px;
-    padding: 28px 22px;
-    box-shadow: 0 18px 44px rgba(0,0,0,0.14);
+  .card,
+  .content-card,
+  .text-card {
+    margin: -78px auto 18px;
+    padding: 34px 26px;
+    max-width: 540px;
   }
 
-  .kicker { font-size: 18px; }
-  .headline { font-size: 56px; }
-  .lead { font-size: 28px; margin-top: 10px; }
-  .body { font-size: 20px; line-height: 1.85; }
+  .card-grid,
+  .card-inner,
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
 
-  .play__circle { width: 96px; height: 96px; }
-  .play__icon { width: 42px; height: 42px; }
+  .kicker,
+  .hey,
+  .small-hello {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  .h1,
+  .headline,
+  .big-name,
+  .card h1,
+  .card .headline {
+    /* reduce “I’M NEIL.” on phone */
+    font-size: 46px;
+  }
+
+  .lead,
+  .first-bold,
+  .bold-line {
+    font-size: 18px; /* same as body */
+  }
+
+  .body,
+  .copy,
+  .card p,
+  .card .copy p {
+    font-size: 18px;
+    line-height: 1.8;
+  }
+
+  .video-section,
+  .video-wrap,
+  .featured {
+    max-width: 560px;
+  }
 }
+
+/* =========
+   Safety: ensure text box is ALWAYS above loop
+========= */
+.card, .content-card, .text-card, .main { z-index: 3; }
+.hero { z-index: 0; }
