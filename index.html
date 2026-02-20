@@ -1,170 +1,92 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>Neil Hooley</title>
-
-  <!-- Prevent any flash/jump before style.css loads -->
-  <style>
-    .hero{position:relative;height:54vh;min-height:360px;max-height:640px;overflow:hidden;background:#f6f2ea}
-    .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block}
-    .hero-overlay{position:absolute;inset:0;background:rgba(246,242,234,.10);pointer-events:none}
-    .site-title{position:absolute;top:26px;left:50%;transform:translateX(-50%);margin:0;z-index:3;color:#111;font-weight:900;letter-spacing:.14em;text-transform:uppercase;font-size:20px;white-space:nowrap}
-  </style>
-
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Neil Hooley</title>
+<link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
-  <main class="page">
 
-    <!-- HERO LOOP -->
-    <section class="hero" aria-label="Hero background">
-      <h1 class="site-title">NEIL HOOLEY</h1>
+<section class="hero">
+<h1 class="site-title">NEIL HOOLEY</h1>
 
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        webkit-playsinline
-        preload="auto"
-        aria-hidden="true"
-      >
-        <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4" />
-      </video>
+<video class="hero-video" autoplay muted loop playsinline webkit-playsinline>
+<source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/hero.mp4" type="video/mp4">
+</video>
 
-      <div class="hero-overlay" aria-hidden="true"></div>
-    </section>
+<div class="overlay"></div>
+</section>
 
-    <!-- CONTENT -->
-    <section class="content">
+<section class="main">
 
-      <!-- WHITE TEXT CARD -->
-      <section class="card" aria-label="Intro">
-        <div class="card-grid">
-          <div class="left">
-            <p class="kicker">Hey there!</p>
-            <p class="headline">I’M NEIL.</p>
-          </div>
+<div class="card">
+<p class="kicker">Hey there!</p>
 
-          <div class="right">
-            <p class="lead">I’ve always believed stories shape us, and the right story can change everything.</p>
+<h2 class="imneil">I’M NEIL.</h2>
 
-            <p class="body">
-              As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience, and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
-            </p>
+<p class="lead">
+I’ve always believed stories shape us, and the right story can change everything.
+</p>
 
-            <p class="body">
-              Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely, and discover the beauty of what God is writing in their own story.
-            </p>
-          </div>
-        </div>
-      </section>
+<p>
+As an entrepreneur, storyteller, and follower of Jesus, I use real conversations, lived experience, and a deep love for storytelling to help others see their lives through the lens of redemption and purpose.
+</p>
 
-      <!-- FEATURED VIDEO (NO native controls, clean) -->
-      <section class="featured" aria-label="Featured video">
-        <div class="featured-frame" id="featuredFrame">
+<p>
+Through stories of faith, failure, and transformation, my work invites people to slow down, listen closely, and discover the beauty of what God is writing in their own story.
+</p>
+</div>
 
-          <video
-            id="featuredVideo"
-            class="featured-video"
-            playsinline
-            webkit-playsinline
-            preload="metadata"
-            poster="assets/featured-poster.jpg"
-          >
-            <source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4" />
-          </video>
+<div class="video-wrap">
 
-          <!-- Center play/pause (always centered) -->
-          <button class="vbtn vbtn-center" id="ppBtn" type="button" aria-label="Play or pause">
-            <span class="ppIcon" aria-hidden="true"></span>
-          </button>
+<video id="featuredVideo" class="featured" preload="metadata" playsinline webkit-playsinline>
+<source src="https://pub-4bd07c4320af40e29fe46ef7fed0424b.r2.dev/featured.mp4" type="video/mp4">
+</video>
 
-          <!-- Fullscreen (inside, bottom-right) -->
-          <button class="vbtn vbtn-fs" id="fsBtn" type="button" aria-label="Fullscreen">
-            <span class="fsIcon" aria-hidden="true"></span>
-          </button>
+<button id="playBtn" class="play"></button>
 
-        </div>
-      </section>
+</div>
 
-      <!-- SOCIAL ICONS -->
-      <nav class="social" aria-label="Social links">
-        <a href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4v1.7H16l-.5 2.9h-2v7A10 10 0 0 0 22 12z"/>
-          </svg>
-        </a>
+<div class="social">
 
-        <a href="https://www.instagram.com/neilhooley?igsh=bWE3bGhpa2g0enBi&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5zM18.2 6.8a1.1 1.1 0 1 1-1.1-1.1 1.1 1.1 0 0 1 1.1 1.1z"/>
-          </svg>
-        </a>
+<a href="https://www.facebook.com/share/1ZfpmcxoH2/?mibextid=wwXIfr" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H8v-2.9h2.4V9.8c0-2.4 1.4-3.7 3.6-3.7 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.5.7-1.5 1.4v1.7H16l-.5 2.9h-2v7A10 10 0 0 0 22 12z"/></svg>
+</a>
 
-        <a href="https://youtube.com/@neil.hooley?si=Th3MktDQJRRV4mAz" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12a31 31 0 0 0-.4-4.8zM10 15.5v-7l6 3.5-6 3.5z"/>
-          </svg>
-        </a>
-      </nav>
+<a href="https://www.instagram.com/neilhooley" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5z"/></svg>
+</a>
 
-      <footer class="footer" aria-label="Footer">
-        <p class="copyright">© 2026 Kingdom Media</p>
-      </footer>
+<a href="https://youtube.com/@neil.hooley" target="_blank">
+<svg viewBox="0 0 24 24"><path d="M21.6 7.2a3 3 0 0 0-2.1-2.1C17.8 4.6 12 4.6 12 4.6s-5.8 0-7.5.5A3 3 0 0 0 2.4 7.2 31 31 0 0 0 2 12a31 31 0 0 0 .4 4.8 3 3 0 0 0 2.1 2.1c1.7.5 7.5.5 7.5.5s5.8 0 7.5-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 22 12z"/></svg>
+</a>
 
-    </section>
-  </main>
+</div>
 
-  <script>
-    (function () {
-      const v = document.getElementById("featuredVideo");
-      const pp = document.getElementById("ppBtn");
-      const fs = document.getElementById("fsBtn");
-      const frame = document.getElementById("featuredFrame");
+<footer>
+<p>© 2026 Kingdom Media</p>
+</footer>
 
-      function setState() {
-        document.documentElement.classList.toggle("is-playing", !v.paused && !v.ended);
-      }
+</section>
 
-      function togglePlay() {
-        if (v.paused || v.ended) {
-          v.play().catch(()=>{});
-        } else {
-          v.pause();
-        }
-      }
+<script>
+const v=document.getElementById("featuredVideo");
+const b=document.getElementById("playBtn");
 
-      function fullscreen() {
-        if (frame.requestFullscreen) {
-          frame.requestFullscreen().catch(()=>{});
-          return;
-        }
-        if (v.webkitEnterFullscreen) {
-          v.webkitEnterFullscreen();
-        }
-      }
-
-      // Center button is always the main control
-      pp.addEventListener("click", (e) => { e.stopPropagation(); togglePlay(); });
-
-      // Tap video toggles too (clean + intuitive)
-      v.addEventListener("click", togglePlay);
-
-      // Fullscreen button
-      fs.addEventListener("click", (e) => { e.stopPropagation(); fullscreen(); });
-
-      v.addEventListener("play", setState);
-      v.addEventListener("pause", setState);
-      v.addEventListener("ended", setState);
-
-      setState();
-    })();
-  </script>
+function toggle(){
+if(v.paused){
+v.play();
+document.body.classList.add("playing");
+}else{
+v.pause();
+document.body.classList.remove("playing");
+}
+}
+b.onclick=toggle;
+v.onclick=toggle;
+</script>
 
 </body>
 </html>
